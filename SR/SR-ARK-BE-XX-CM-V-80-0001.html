@@ -1,0 +1,1943 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Model Checker Report</title>
+    <style type="text/css">
+        /*  Name-agnostic definitions.
+ *  These definitions are just a copy of the definitions further below given a generic name.
+ *  This allows publishers to make a reference to "the page's default font" without having to
+ *  update hundreds of custom pages/styles to match the new name.
+ */
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  Generic "Artifakt" definitions.
+         *  An attempt will be made to map styles to appropriate font-faces when these are used.
+         *  See the definitions below if you wish to use a specific font.
+         */
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Legend" definitions.
+         *   These definitions are for the "Artifakt Legend" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendLight.svg#ArtifaktLegendLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendRegular.svg#ArtifaktLegendRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendMedium.svg#ArtifaktLegendMedium') format('svg');
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Element" definitions.
+         *   These definitions are for the "Artifakt Element" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-weight: 700;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-italic.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementItalic.svg#ArtifaktElementItalic') format('svg');
+            font-style: italic;
+            font-weight: 400;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            font: 100%/1.4 ADSK-Default, Verdana, Arial, Helvetica, sans-serif;
+            background: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin-top: 0; /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+            margin-bottom: 0;
+            padding-right: 0;
+            padding-left: 0; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+        }
+
+        h1, h3 {
+            color: white;
+        }
+
+        h1 {
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-size: 1.5em;
+            margin: 0px;
+        }
+
+        a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+            border: none;
+        }
+
+        /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+        a:link {
+            color: #414958;
+        }
+
+        a:visited {
+            color: #4E5869;
+        }
+
+        a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+            text-decoration: none;
+        }
+
+        /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+        .container {
+            width: 100%;
+            max-width: 1260px; /* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+            min-width: 780px; /* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+            background: #f1f1f1;
+            margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+        }
+
+        /* ~~the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo~~ */
+        .header {
+            background-color: #3b4453;
+            border-bottom: 1px black;
+            padding: 15px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .configContainer {
+            padding: 25px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+		
+		.imageContainer{
+		    width: 125px;
+			height: 125px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.checksetImage{
+		    max-width: 100%;
+			height: auto;
+		}
+
+        .resultData {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .tabBar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0 25px;
+        }
+
+        .tabItem {
+            margin-right: 15px;
+            background: #f9f9f9;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            padding: 15px;
+            color: #bb7a14;
+        }
+
+        .tabItem a, .tabItem a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .tabItemActive {
+            margin-right: 15px;
+            padding: 15px;
+            background: white;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            color: #bb7a14;
+        }
+
+        .tabItemActive a, .tabItemActive a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .portalStandardText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: lighter;
+        }
+
+        .portalHeadlineText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .portal {
+            background: white;
+            margin: 0 25px 25px 25px;
+            padding: 15px;
+        }
+
+        .treeElement {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+
+        .checkResult {
+            border: 1px black solid;
+            padding: 15px;
+            margin-top: 15px;
+            margin-left: 25px;
+            display: grid;
+            justify-content: flex-start;
+            grid-template-columns: auto 1fr;
+        }
+
+        .itemList {
+            width: 100%;
+        }
+
+        .itemList th {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+            background: #f1f1f1;
+            padding: 0 10px;
+        }
+
+        .configData {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-column-gap: 15px;
+            margin-left: 15px
+        }
+
+        .passRate{
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-weight: bold;
+            font-size: 4.5em;
+        }
+        .structureHeading{
+            display: flex;
+        }
+
+        .structureBreakdown{
+            flex: auto;
+            flex-grow: 0;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .structureHeadingText{
+            flex-grow: 1;
+        }
+
+        .overallShown{
+            display: grid;
+            grid-template-rows: auto auto auto;
+            margin: 0 25px;
+        }
+        .overallHidden{
+            display: none;
+        }
+
+        .resultLow {
+            color: rgb(221, 34, 34);
+        }
+
+        .resultHigh {
+            color: rgb(135, 188, 64);
+        }
+
+        .resultMedium {
+            color: rgb(250, 162, 77);
+        }
+
+        .tableScroll{
+            overflow: auto;
+            max-height: 350px;
+            margin-top: 15px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_ModelChecker_24.png" width="24" height="24" style="margin-right: 15px" alt="Autodesk Model Checker for Revit"/>
+        <h1>Autodesk Model Checker for Revit</h1>
+    </div>
+    <div class="configContainer">
+        <div class="imageContainer">
+		    <img src="M:\MV_General_Server\MV_BIM_Consulting\02_MV_Server_Resource_AutoCAD\Logos\MDS logo.png" class="checksetImage" 
+			onerror="this.src = 'https://interoperability.autodesk.com/modelchecker/reports/HeroImage_ModelChecker.png';" 
+			alt="Checkset Image"/>
+		</div>
+        <div class="configData">
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Title</span><span class="portalStandardText">BIM Model Audit</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Date</span><span class="portalStandardText">jueves, 15 de julio de 2021</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Author</span><span class="portalStandardText">MV-BIM / MDS</span>
+            <span class="portalHeadlineText">Description</span><span
+                class="portalStandardText">Series of checks to review modeling best practices and integrity</span>
+        </div>
+    </div>
+    <div class="tabBar">
+        <div class="tabItemActive"><a href="SR-ARK-BE-XX-CM-V-80-0001.html">SR-ARK-BE-XX-CM-V-80-0001</a></div>
+    </div>
+    <div class="portal">
+        <div class="resultData">
+            <div class="overallShown">
+    <span class="passRate resultLow" style="text-align: center">25%</span>
+</div>
+<div style="display: grid; grid-template-columns: auto auto; grid-column-gap: 15px; margin-left: 15px">
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Check Summary</span><span
+        class="portalStandardText">47 Checks, 1 <Span Foreground="#DD2222">(25%)</Span> Pass, 3 Fail, 43 Count/List</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Report Date</span><span
+        class="portalStandardText">lunes, 9 de agosto de 2021 - 10:26:51</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Revit Filepath</span><span
+        class="portalStandardText">M:\MV_General_Server\MV_BIM_Consulting\01_BIM_Projects\200520_Moda Hove\01_WIP\06_BIM Documents\02_BIM Audit Report\01_BIM Model Audit\01\01_Revit Models\ARK\SR-ARK-BE-XX-CM-V-80-0001.rvt</span>
+    <span class="portalHeadlineText">Checkset File</span><span
+        class="portalStandardText">M:\MV_General_Server\MV_BIM_Consulting\14_BIMManagement\5_SoftwareBIM\REVIT\BIM Interoperability Tools\Checksets\BIM Model Audit.xml</span>
+</div>
+        </div>
+    </div>
+    <div class="portal" style="margin-top: 15px">
+        <div>
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">BIM Model Audit</div>
+        <div class="structureBreakdown">47 Checks, 1 <Span Foreground="#DD2222">(25%)</Span> Pass, 3 Fail, 43 Count/List</div>
+    </div>
+    <div class="portalStandardText"></div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Performance</div>
+        <div class="structureBreakdown">7 Checks, 7 Count/List</div>
+    </div>
+    <div class="portalStandardText">Checks in this section help monitor the result of actions taken over the course of a model’s development, which can directly impact the model’s performance. Proper management of these items can improve model performance.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">File Size</div>
+        <div class="portalStandardText" style="text-align: left">RESULT of the file sizes for all reported Revit models in MB (megabytes).</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 78,02 MB</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Warnings</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all warnings in the model. Too many unresolved warnings can cause performance issues in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 84</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Loadable Families</div>
+        <div class="portalStandardText" style="text-align: left">RESULT and LIST of the families in the project ordered by file size.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 102.336 KB</div>
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>996 KB</td></tr>
+<tr><td>-ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD)</td><td>988 KB</td></tr>
+<tr><td>.ARK_P_PLU_FL_SVP Schematic Cap Kitchen</td><td>916 KB</td></tr>
+<tr><td>.ARK_P_PLU_FL_SVP Schematic Cap PUC</td><td>912 KB</td></tr>
+<tr><td>.ARK_E_EFX_FL-Socket Double - IP65</td><td>864 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Tray Hanger</td><td>860 KB</td></tr>
+<tr><td>-ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways)</td><td>844 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Pipe Clamp</td><td>832 KB</td></tr>
+<tr><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>820 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>764 KB</td></tr>
+<tr><td>.ARK_M_MEC_FL-Ball Valve Threaded DN15-100 (ByPass IN-OUT)</td><td>760 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Flow Meter Digital Flanged DN65-300</td><td>756 KB</td></tr>
+<tr><td>.ARK_E_SED_FL-Card Reader</td><td>752 KB</td></tr>
+<tr><td>.ARK_M_MEC_FL-Radiator Panel Heater Hyco Accona - Electrical</td><td>748 KB</td></tr>
+<tr><td>.ARK_E_DAD_FL-Data Socket (ceiling mounted)</td><td>740 KB</td></tr>
+<tr><td>.ARK_E_FIR_FL-Sounder w. Xenon Beacon (wall mounted)</td><td>708 KB</td></tr>
+<tr><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>704 KB</td></tr>
+<tr><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>688 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Commissioning Valve Threaded DN15-50</td><td>664 KB</td></tr>
+<tr><td>.ARK_E_EFX_FL-Flex Outlet</td><td>636 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Branch with 45° Elbow</td><td>628 KB</td></tr>
+<tr><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>616 KB</td></tr>
+<tr><td>zzz.ARK_Electrical Maglock</td><td>612 KB</td></tr>
+<tr><td>zzz.ARK_Key Operated</td><td>608 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Ball Valve Soldered DN15-54</td><td>604 KB</td></tr>
+<tr><td>-ARK_E_EFX_FL-Isolator 1phase</td><td>596 KB</td></tr>
+<tr><td>1574757847CAT-5 Break Tank & Booster Set</td><td>596 KB</td></tr>
+<tr><td>zzz.ARK_Fire Alarm Break Glass Unit</td><td>588 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Strainer Soldered DN15-54</td><td>576 KB</td></tr>
+<tr><td>.ARK_E_LIF_FL-CCTV</td><td>572 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Pressure Reducer Soldered DN15-54</td><td>568 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>564 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Drain Valve Soldered DN15-28</td><td>560 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Tee Rodding Eye</td><td>560 KB</td></tr>
+<tr><td>.ARK_Data_Panels</td><td>544 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Drain Valve Threaded DN15-25</td><td>544 KB</td></tr>
+<tr><td>zzz.ARK_E_EEQ_FL-Distribution Board</td><td>540 KB</td></tr>
+<tr><td>zzz.ARK_E_EEQ_FL- IRS Space</td><td>540 KB</td></tr>
+<tr><td>.ARK_E_FIR_FL-Fire Door Holder</td><td>540 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Pressure Reducer Threaded DN15-100</td><td>536 KB</td></tr>
+<tr><td>.ARK_E_SED_FL-Door Sensor</td><td>532 KB</td></tr>
+<tr><td>ACM_Fire Alarm Panel</td><td>532 KB</td></tr>
+<tr><td>zzz.ARK_E_EEQ_FL-ATS Panel</td><td>532 KB</td></tr>
+<tr><td>zzz.ARK_E_EEQ_FL-ELV and WIFI Cabinet</td><td>532 KB</td></tr>
+<tr><td>zzz.ARK_E_EEQ_FL-Access Control_SPACE</td><td>516 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Butterfly Valve Flanged DN65-200</td><td>512 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Reducer</td><td>508 KB</td></tr>
+<tr><td>.ARK_P_PLU_FL-Roof Drain Outlet</td><td>504 KB</td></tr>
+<tr><td>.ARK_E_DR-SALTO HANDLESETS</td><td>504 KB</td></tr>
+<tr><td>.ARK_E_FIR_FL-Fire Alarm Interface</td><td>500 KB</td></tr>
+<tr><td>ARK_M_PIP_FL-HDPE_Double 45 Elbow</td><td>488 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Gas Pressure Regulator Flanged DN65-200</td><td>488 KB</td></tr>
+<tr><td>zzz.ARK_Light Indicator</td><td>484 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Inspection Cap</td><td>480 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Cross</td><td>476 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Air Admittance Valve</td><td>476 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Vertical Outside Bend</td><td>468 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Vertical Inside Bend</td><td>468 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU Cross Soldered</td><td>452 KB</td></tr>
+<tr><td>zzz.ARK_M_PIF_FL-RWP Gully Cap</td><td>444 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Automatic Air Vent</td><td>444 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Flat Bend</td><td>440 KB</td></tr>
+<tr><td>FB.ARK_E_SEC_FA-Security PIR (1)</td><td>436 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU Tee Reduced Soldered</td><td>428 KB</td></tr>
+<tr><td>.ARK_SEC_intruder alarm sounder</td><td>424 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Sleeve Expasion Joint</td><td>424 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU Tee Flanged</td><td>420 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Vent Cowl</td><td>416 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cross Flanged</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Trunking Tee</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Vertical Outside Bend</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Vertical Inside Bend</td><td>416 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Lateral 45° Flanged</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Trunking Reducer</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Vertical Inside Bend</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Reducer</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Flat Bend</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Trunking Cross</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Reducer</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Vertical Outside Bend</td><td>416 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE BranchBall Double</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Flat Bend</td><td>412 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Trunking Flat Bend</td><td>412 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Flanged</td><td>412 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Reduced Flanged</td><td>412 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU Elbow Soldered</td><td>408 KB</td></tr>
+<tr><td>Rectangular - Oval Transformation - Slip Joint</td><td>408 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Tee</td><td>408 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Double Check Valve Threaded DN15-50</td><td>404 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Cross</td><td>404 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>404 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Cross</td><td>404 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU Reducer Soldered</td><td>404 KB</td></tr>
+<tr><td>HL_Rectangular - Round Transformation</td><td>404 KB</td></tr>
+<tr><td>Rectangular Square Tee - Flanged</td><td>400 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Tee</td><td>400 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Tee</td><td>400 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Reducer Flanged</td><td>400 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Elbow</td><td>396 KB</td></tr>
+<tr><td>ARK_Rigid Duct Horizontal T Piece PVC</td><td>396 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>392 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>392 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Reducer</td><td>392 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cross Welded</td><td>392 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Reducer Threaded</td><td>392 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Trunking Vertical Bend</td><td>392 KB</td></tr>
+<tr><td>M_Floor Drain - Round1</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Branch</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Test Point</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU Coupling Soldered</td><td>388 KB</td></tr>
+<tr><td>Rectangular - Round Transformation - Flanged</td><td>388 KB</td></tr>
+<tr><td>zz.ARK_E_EEQ_Earth_Bar</td><td>388 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Ladder Union</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>384 KB</td></tr>
+<tr><td>M_Transition square to circular</td><td>380 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-Clearance Zone</td><td>380 KB</td></tr>
+<tr><td>M_T Connection</td><td>380 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-Clearance Zone Cylinder</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-MDPE Cap eFusion</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Elbow Flanged</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cross Threaded</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cap Welded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Elbow Threaded</td><td>376 KB</td></tr>
+<tr><td>ARK_Rigid Duct 90º Horizontal Bend PVC</td><td>376 KB</td></tr>
+<tr><td>M_Switch round</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Branch Takeoff</td><td>376 KB</td></tr>
+<tr><td>Rectangular Medium Radius Bend - Flanged</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Reduced Threaded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Reduced Welded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CU End Cap Soldered</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Reducer Welded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Elbow Welded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Flange WeldNeck</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Flange WeldNeck (union)</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Twin Elbow Welded</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Tee Reducer</td><td>372 KB</td></tr>
+<tr><td>zzz.ARK_M_PIF_FL-HDPE Branch (old)</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Coupling Welded</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Elbow</td><td>368 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Trunking Union</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Concentric Reducer</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Flange Blind</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Coupling Threaded</td><td>364 KB</td></tr>
+<tr><td>Rectangular Concentric Taper - Flanged</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cap Threaded</td><td>364 KB</td></tr>
+<tr><td>M_Transition circular - Angle</td><td>364 KB</td></tr>
+<tr><td>ARK_Rigid Duct In-Line Adapter</td><td>364 KB</td></tr>
+<tr><td>.ARK_E_CNF_FL-PVC Cable Ducting Elbow</td><td>360 KB</td></tr>
+<tr><td>Rectangular Shoe Branch - Flanged</td><td>360 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Coupling</td><td>360 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-Clearance Zone Angle</td><td>360 KB</td></tr>
+<tr><td>.ARK_E_CNF_FL-PVC Cable Ducting Coupling</td><td>360 KB</td></tr>
+<tr><td>Round Pressed Bend - Slip Joint</td><td>356 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Opening (slab)</td><td>356 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Basket Union</td><td>352 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-HDPE Coupling eFusion</td><td>352 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Union</td><td>352 KB</td></tr>
+<tr><td>.ARK_M_MEC_FL-System Breaker SPK</td><td>352 KB</td></tr>
+<tr><td>.ARK_SplashScreen</td><td>352 KB</td></tr>
+<tr><td>.ARK_M_MEC_FL-System Breaker SVP</td><td>352 KB</td></tr>
+<tr><td>Rectangular Blank End</td><td>344 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-SVP AP Direction Detail</td><td>344 KB</td></tr>
+<tr><td>Round Blank End</td><td>344 KB</td></tr>
+<tr><td>M_Union round</td><td>340 KB</td></tr>
+<tr><td>Rectangular Union</td><td>340 KB</td></tr>
+<tr><td>.ARK_Z_SEC_Z-Section Head Sheet</td><td>300 KB</td></tr>
+<tr><td>.ARK_Z_LEH_Z-Level Head FFL</td><td>296 KB</td></tr>
+<tr><td>.ARK_Z_SEC_Z-Section Head Working</td><td>296 KB</td></tr>
+<tr><td>.ARK_Z_VTI_Z-View Title</td><td>292 KB</td></tr>
+<tr><td>.ARK_Z_EMA_Z-Elevation Mark</td><td>292 KB</td></tr>
+<tr><td>.ARK_Z_SES_Z-Spot Elevation Target</td><td>292 KB</td></tr>
+<tr><td>.ARK_Z_GRH_Z-Grid Head Circle</td><td>288 KB</td></tr>
+<tr><td>.ARK_Z_CAL_Z-Callout Head</td><td>288 KB</td></tr>
+<tr><td>.ARK_Z_SEC_Z-Section Tail Working</td><td>288 KB</td></tr>
+<tr><td>Electronics_Audio_Comelit_Modular-Ikall-Entrance-Panel_3-modules-AV-digital</td><td>2.000 KB</td></tr>
+<tr><td>zz.Video Door Entry Panel</td><td>1.996 KB</td></tr>
+<tr><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>1.828 KB</td></tr>
+<tr><td>CG.ARK_E_LIF_FL-WALL CCTV</td><td>1.700 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Fire Sprinkler Valve Set Threaded DN25-32</td><td>1.568 KB</td></tr>
+<tr><td>FB.ARK_E_SEC_FL-LCD Keypad</td><td>1.428 KB</td></tr>
+<tr><td>.ARK_P_PLU_FL_SVP Schematic Cap Toilet</td><td>1.240 KB</td></tr>
+<tr><td>.ARK_E_FIR_FL-Smoke Detector1</td><td>1.216 KB</td></tr>
+<tr><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1.188 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Commissioning Valve Flanged DN65-300</td><td>1.188 KB</td></tr>
+<tr><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1.184 KB</td></tr>
+<tr><td>.ARK_E_LID_FL-Key Switch - Metalclad</td><td>1.104 KB</td></tr>
+<tr><td>.ARK_E_EFX_FL-Socket Double</td><td>1.048 KB</td></tr>
+<tr><td>.ARK_E_SED_FL-Dual Unit Press to Exit</td><td>1.024 KB</td></tr>
+<tr><td>.ARK_Z_PIF_FL-Pipe Clamp</td><td>1.008 KB</td></tr>
+<tr><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>1.004 KB</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Purgeable Elements</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all elements that can be purged from a Revit model. A large number of unneeded elements can increase the model size with no benefit. Note that the count reported here may differ from the Purge Unused command in the Revit interface due to API restraints.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 292</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Model Groups</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all model group elements in the model. Too many model groups can be an indication of improper modeling techniques.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Detail Groups</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all detail group elements in the model. Too many detail groups can be an indication of improper modeling techniques.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">In-Place Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all in-place family elements in the model. In-place families can signifcantly impact model size and performance and should be used sparingly.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Project Settings</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText">Checks in this section are related to settings that can be configured at a project level, which may need to be verified for compliance with standards defined for the project.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Revit Version</div>
+        <div class="portalStandardText" style="text-align: left">LIST of the version and build data of Revit running the check.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: Autodesk Revit 2019 20190108_1515(x64)</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Design Options</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all elements created in each design option of the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Elements Per Phase</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all elements in each phase of the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 15.019</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>15019</td><td>New Construction</td></tr>
+<tr><td>0</td><td>Existing</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Worksets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all user worksets in the model or indicates '*Not Workshared*' if worksharing is not enabled.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 15</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>.ARK_B_WST_X-BW & Openings</td></tr>
+<tr><td>.ARK_B_WST_X-Unistrut & Hanger</td></tr>
+<tr><td>.ARK_E_WST_X-Electrical Combined</td></tr>
+<tr><td>.ARK_E_WST_X-Electrical Containment</td></tr>
+<tr><td>.ARK_H_WST_X-Ventilation</td></tr>
+<tr><td>.ARK_M_WST_X-GAS</td></tr>
+<tr><td>.ARK_M_WST_X-LTHW & CHW</td></tr>
+<tr><td>.ARK_M_WST_X-Mechanical Combined</td></tr>
+<tr><td>.ARK_M_WST_X-Mechanical Combined - Plantroom</td></tr>
+<tr><td>.ARK_M_WST_X-VRF</td></tr>
+<tr><td>.ARK_P_WST_X-BCWS, DWS & SPK</td></tr>
+<tr><td>.ARK_P_WST_X-SVP & RWP</td></tr>
+<tr><td>.ARK_Z_WST_X-Levels & Grids (Workset1)</td></tr>
+<tr><td>.ARK_Z_WST_X-RVT Link</td></tr>
+<tr><td>.ARK_Z_WST_X-Space & HVAC Zone</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Project Coordinates</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of the coordinate values of the survey and project base points, elevation, and true north.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 5</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>Project Base Point Coordinate</td><td>528300000 E/W  |  105600000 N/S</td></tr>
+<tr><td>Project Base Point Elevation</td><td>0</td></tr>
+<tr><td>Project Base Point Rotation</td><td>3.15°</td></tr>
+<tr><td>Survey Point Coordinate</td><td>0 E/W  |  0 N/S</td></tr>
+<tr><td>Survey Point Elevation</td><td>0</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">External Files</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to linked and imported files in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Linked Revit Files and Their Link Method</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of the link method (overlay vs. attach) for each Revit link in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>RVT Links : Type : SR-JRL-BE-XX-M3-S-80-0001.rvt</td><td>Overlay</td></tr>
+<tr><td>RVT Links : Type : SR-MDS-BE-XX-M3-80-0001.rvt</td><td>Overlay</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Linked CAD Files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all linked CAD files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Imported CAD files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all CAD files that were Imported and not Linked.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Imported SKP files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all imported SKP files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Raster Images</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all raster images placed in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Levels and Grids</div>
+        <div class="structureBreakdown">2 Checks, 2 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to levels and grids in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Levels</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all level elements in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 16</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Grids</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all grid elements in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 11</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Views & Sheets</div>
+        <div class="structureBreakdown">3 Checks, 3 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to views in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Views Not On Sheets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all views (not including views that can be placed on more than one sheet, like Schedules and Legends) that are not placed on a sheet in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 14</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>3D View - MEP_COORD_Drainage</td></tr>
+<tr><td>3D View - MEP_COORD_Electrical Distribution</td></tr>
+<tr><td>3D View - MEP_COORD_Electrical Fixtures</td></tr>
+<tr><td>3D View - MEP_COORD_Main Equipment</td></tr>
+<tr><td>3D View - MEP_COORD_Pipework Distribution</td></tr>
+<tr><td>3D View - MEP_COORD_Pipework Fixture</td></tr>
+<tr><td>3D View - MEP_COORD_Ventilation Distribution*</td></tr>
+<tr><td>3D View - MEP_COORD_Ventilation Fixture*</td></tr>
+<tr><td>3D View - MEP_GEN_Complete</td></tr>
+<tr><td>3D View - MEP_GEN_Drainage Only</td></tr>
+<tr><td>3D View - MEP_GEN_Electrical Only</td></tr>
+<tr><td>3D View - MEP_GEN_Equipments Only</td></tr>
+<tr><td>3D View - MEP_GEN_Piping Only</td></tr>
+<tr><td>3D View - MEP_GEN_Ventilation Only*</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Sheets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all sheets in the model. Sheets typically do not impact model size, but too many unmanaged views can impact user efficiency.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Schedules</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all schedules in the model. Schedules typically do not impact model size, but too many unmanaged views can impact user efficiency.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Elements</div>
+        <div class="structureBreakdown">25 Checks, 1 <Span Foreground="#DD2222">(25%)</Span> Pass, 3 Fail, 21 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to model elements in the model.</div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Arch System Families</div>
+        <div class="structureBreakdown">10 Checks, 10 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of architectural system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Ceiling Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all ceiling family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ceilings : Type : Ceiling 1</td></tr>
+<tr><td>Ceilings : Type : MVB_A_XX_CEI-IC1_25mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Curtain System</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all architectural curtain system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Curtain Systems : Type : Curtain System</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Curtain Wall Mullion Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all curtain wall mullion family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Floor Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all floor family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Floors : Type : x. Default</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Railing Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all railing family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Railings : Type : Railing 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Ramp Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all ramp family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ramps : Type : Ramp 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Roof Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all roof family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Roofs : Type : Roof 1</td></tr>
+<tr><td>Roofs : Type : Sloped Glazing</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Site Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all site family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Stair Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all stair family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 4</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Stairs : Type : Cast-In-Place Stair</td></tr>
+<tr><td>Stairs : Type : Precast Stair</td></tr>
+<tr><td>Stairs : Type : Stairs 1</td></tr>
+<tr><td>Stairs : Type : Stairs 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Wall Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all wall family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Walls : Type : -</td></tr>
+<tr><td>Walls : Type : .ARK_A_WALL_X-Interior 120mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">MEP System Families</div>
+        <div class="structureBreakdown">9 Checks, 1 <Span Foreground="#DD2222">(33%)</Span> Pass, 2 Fail, 6 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of MEP system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all duct family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 3</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ducts : Type : -</td></tr>
+<tr><td>Ducts : Type : .ARK_H_DUC_X-Insulated Duct</td></tr>
+<tr><td>Ducts : Type : .ARK_H_DUR_X-PVC Duct</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct System Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all duct system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 3</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-EXH - Exhaust Air</td></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-FRH - Fresh Air</td></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-SUP - Supply Air</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Pass_26.png" alt="PASS" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any duct related elements that have a blank System Name.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Flex Duct Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all flex duct family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Flex Ducts : Type : Flex - Rectangular</td></tr>
+<tr><td>Flex Ducts : Type : Semi Rigid - Flex Duct</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Flex Pipe Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all flex pipe family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Flex Pipes : Type : Flex - Round</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Pipe Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all pipe family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 7</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-cPVC Threaded - for Sprinkler</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Flanged</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Threaded</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Welded</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Welded - Tap</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CU Soldered</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-HDPE Welded</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Piping System Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all piping system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 15</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-BCWS - Boosted Cold Water Service</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-CAT5 - CAT-5 Water Service</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-DHWS - Domestic Hot Water Service</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-GAS - Natural Gas</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-LTHW-F - Low Temperature Heating Water Flow</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-LTHW-R - Low Temperature Heating Water Return</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-RWP - Rain Water Pipe</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-SPK - Sprinkler</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-SVP - Soil and Vent Pipe</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-VP - Vent Pipe</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-FDR - Fire Dry Riser</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-FWR - Fire Wet Riser</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-VP - Vent Pipe</td></tr>
+<tr><td>Piping Systems : Type : xxx. (fp other)</td></tr>
+<tr><td>Piping Systems : Type : xxx. (fp pre-action)</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Piping Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any piping related elements that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are piping related elements that that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 69</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19659770</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660144</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660536</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660630</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660722</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660845</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660939</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661176</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661301</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661395</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661535</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661658</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661752</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661837</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661960</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662054</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662190</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662313</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662407</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662492</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662558</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662464</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662341</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662256</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19662162</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661988</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661903</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661809</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661686</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661601</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661507</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661329</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661242</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19661148</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660873</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660788</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660694</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660564</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660213</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19660116</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19659698</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>19659670</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19975718</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19970052</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19977304</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>20015854</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19961974</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19975594</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19970098</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19961656</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Branch (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Branch (nested) : Standard</td><td>19960887</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19975716</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19977302</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>20015852</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>20015894</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>20015905</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>20015907</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>20015896</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19975592</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19970096</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19975381</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19975383</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19961972</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19970050</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19961654</td></tr>
+<tr><td>Pipe Fittings</td><td>.ARK_M_PIF_FL-HDPE Elbow (nested)</td><td>Standard</td><td>Pipe Fittings : .ARK_M_PIF_FL-HDPE Elbow (nested) : Standard</td><td>19960885</td></tr>
+<tr><td>Plumbing Fixtures</td><td>M_Floor Drain - Round1</td><td>125 mm Strainer - 100 mm Drain 2</td><td>Plumbing Fixtures : M_Floor Drain - Round1 : 125 mm Strainer - 100 mm Drain 2</td><td>19431782</td></tr>
+<tr><td>Plumbing Fixtures</td><td>M_Floor Drain - Round1</td><td>125 mm Strainer - 100 mm Drain 2</td><td>Plumbing Fixtures : M_Floor Drain - Round1 : 125 mm Strainer - 100 mm Drain 2</td><td>19431780</td></tr>
+<tr><td>Plumbing Fixtures</td><td>M_Floor Drain - Round1</td><td>125 mm Strainer - 100 mm Drain 2</td><td>Plumbing Fixtures : M_Floor Drain - Round1 : 125 mm Strainer - 100 mm Drain 2</td><td>19430879</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Electrical Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any electrical related elements that have a blank Panel Name or Circuit Number.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are electrical related elements that have a blank Panel Name or Circuit Number.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 256</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways)</td><td>8+8 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways) : 8+8 Ways</td><td>19749388</td></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways)</td><td>8+8 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways) : 8+8 Ways</td><td>19749828</td></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways)</td><td>8+8 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Distribution Board 125A Dual Metered MID (up to 12+12ways) : 8+8 Ways</td><td>19749383</td></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD)</td><td>1J - 30 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD) : 1J - 30 Ways</td><td>19749752</td></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD)</td><td>2J - 30 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD) : 2J - 30 Ways</td><td>19749380</td></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD)</td><td>2J - 30 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD) : 2J - 30 Ways</td><td>19755849</td></tr>
+<tr><td>Electrical Equipment</td><td>-ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD)</td><td>2J - 30 Ways</td><td>Electrical Equipment : -ARK_E_EEQ_FL-Multi-Service Distribution Board (MSBD) : 2J - 30 Ways</td><td>19749377</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Flex Outlet</td><td>Flex Outlet - Radiator</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Flex Outlet : Flex Outlet - Radiator</td><td>18977651</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Flex Outlet</td><td>Flex Outlet - Radiator</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Flex Outlet : Flex Outlet - Radiator</td><td>18977646</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit</td><td>19750095</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit</td><td>19749926</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for Access Control</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for Access Control</td><td>19750067</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for Access Control</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for Access Control</td><td>19750056</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for Access Control</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for Access Control</td><td>19750045</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for Access Control</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for Access Control</td><td>19750030</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for Access Control</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for Access Control</td><td>19749952</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750143</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750169</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750178</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750177</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750168</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750211</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750251</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19755795</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19755794</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750294</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750293</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750285</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750284</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750262</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750261</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750250</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750240</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750239</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750231</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750230</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750220</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750219</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750210</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750202</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750201</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750193</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19750192</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Fused Connection Unit - Metalclad</td><td>Fused Connection Unit for IRS</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Fused Connection Unit - Metalclad : Fused Connection Unit for IRS</td><td>19749934</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - IP65</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - IP65 : Switched Socket</td><td>18977550</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977522</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977532</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19759927</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977542</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977537</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977527</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760611</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760645</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760677</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760701</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760693</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760685</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760669</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760661</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760653</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760637</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760627</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760619</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760603</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>19760595</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977517</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double - Metalclad</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double - Metalclad : Switched Socket</td><td>18977512</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double : Switched Socket</td><td>18977743</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double : Switched Socket</td><td>19362867</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double : Switched Socket</td><td>18977583</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double : Switched Socket</td><td>18977578</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double : Switched Socket</td><td>18977573</td></tr>
+<tr><td>Electrical Fixtures</td><td>.ARK_E_EFX_FL-Socket Double</td><td>Switched Socket</td><td>Electrical Fixtures : .ARK_E_EFX_FL-Socket Double : Switched Socket</td><td>18977568</td></tr>
+<tr><td>Electrical Fixtures</td><td>-ARK_E_EFX_FL-Isolator 1phase</td><td>20A</td><td>Electrical Fixtures : -ARK_E_EFX_FL-Isolator 1phase : 20A</td><td>19780078</td></tr>
+<tr><td>Electrical Fixtures</td><td>-ARK_E_EFX_FL-Isolator 1phase</td><td>20A</td><td>Electrical Fixtures : -ARK_E_EFX_FL-Isolator 1phase : 20A</td><td>19780292</td></tr>
+<tr><td>Electrical Fixtures</td><td>-ARK_E_EFX_FL-Isolator 1phase</td><td>20A</td><td>Electrical Fixtures : -ARK_E_EFX_FL-Isolator 1phase : 20A</td><td>19780480</td></tr>
+<tr><td>Electrical Fixtures</td><td>-ARK_E_EFX_FL-Isolator 1phase</td><td>20A</td><td>Electrical Fixtures : -ARK_E_EFX_FL-Isolator 1phase : 20A</td><td>19779597</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19487813</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19490407</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19489748</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19489577</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19489215</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19489103</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19488579</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19487826</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19487689</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19487672</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19487659</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Electrical Maglock</td><td>Maglock_H</td><td>Electrical Fixtures : zzz.ARK_Electrical Maglock : Maglock_H</td><td>19487642</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Key Operated</td><td>Key Operated FA Isolator</td><td>Electrical Fixtures : zzz.ARK_Key Operated : Key Operated FA Isolator</td><td>18977803</td></tr>
+<tr><td>Electrical Fixtures</td><td>zzz.ARK_Key Operated</td><td>Key Operated Smoke Vent Isolator</td><td>Electrical Fixtures : zzz.ARK_Key Operated : Key Operated Smoke Vent Isolator</td><td>18977823</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Key Switch - Metalclad</td><td>8gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Key Switch - Metalclad : 8gang Switch</td><td>19760749</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Key Switch - Metalclad</td><td>8gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Key Switch - Metalclad : 8gang Switch</td><td>19760757</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Key Switch - Metalclad</td><td>8gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Key Switch - Metalclad : 8gang Switch</td><td>19759858</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761485</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761471</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19045007</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19045006</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19045005</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19759953</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19301915</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761493</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761511</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761529</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761545</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761561</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761736</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761744</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761728</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761553</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761537</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761519</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19761501</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad : 1gang Switch</td><td>19045004</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768703</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768724</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768773</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768789</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768805</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19769041</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19769057</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19769065</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19769049</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768813</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768797</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768781</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768756</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-Light Switch - 1way Metalclad DP</td><td>1gang Switch</td><td>Lighting Devices : .ARK_E_LID_FL-Light Switch - 1way Metalclad DP : 1gang Switch</td><td>19768050</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296135</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296181</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296545</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296531</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296226</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296146</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296553</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296593</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296637</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296715</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19299712</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296765</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296757</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296723</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296707</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296697</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296687</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296625</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296615</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296601</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296585</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296575</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296567</td></tr>
+<tr><td>Lighting Devices</td><td>.ARK_E_LID_FL-PIR Presence Detector (ceiling mounted)</td><td>Standard Sensor</td><td>Lighting Devices : .ARK_E_LID_FL-PIR Presence Detector (ceiling mounted) : Standard Sensor</td><td>19296122</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>18978228</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>18978233</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>18978223</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>19300317</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>19300464</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>19300472</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>19300456</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight IP65 - (type B1)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight IP65 - (type B1)</td><td>18978218</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978241</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978246</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18977980</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18977975</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18977970</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978251</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978261</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978271</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978281</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978291</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978301</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978311</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978328</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978338</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978348</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978358</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978373</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978383</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978393</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978398</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978388</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978378</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978363</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>19045009</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>19045008</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978353</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>19045003</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>19045002</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978343</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978333</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978323</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978306</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978296</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978286</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978276</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978266</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18978256</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Ceiling Downlight</td><td>Orlight ORL6009 - (type L2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Ceiling Downlight : Orlight ORL6009 - (type L2)</td><td>18977965</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19045001</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19045000</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19299993</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19045017</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044994</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044995</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044996</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044997</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044999</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044998</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-EXIT Light (ceiling mounted)</td><td>Orlight ORLEXTRC (recessed ceiling)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-EXIT Light (ceiling mounted) : Orlight ORLEXTRC (recessed ceiling)</td><td>19044993</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978195</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978205</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>19045011</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>19045010</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978210</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978200</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978190</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978117</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978122</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978132</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978137</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978142</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978152</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978157</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978162</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978175</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978180</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978185</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978167</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978147</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978127</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978097</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978102</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978107</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978112</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978087</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978092</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978082</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Luminaire Technical Area</td><td>Orlight ORLWP222 - (type L7.2)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Luminaire Technical Area : Orlight ORLWP222 - (type L7.2)</td><td>18978067</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760226</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760234</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760242</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760250</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760258</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760164</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760174</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760184</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760194</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760206</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760218</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19760133</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19759967</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>-generic</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : -generic</td><td>19045018</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>Orlight 1551S (type L4)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : Orlight 1551S (type L4)</td><td>19045014</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>Orlight 1551S (type L4)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : Orlight 1551S (type L4)</td><td>19045015</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>Orlight 1551S (type L4)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : Orlight 1551S (type L4)</td><td>19045013</td></tr>
+<tr><td>Lighting Fixtures</td><td>.ARK_E_LIF_FL-Wall Light Landlord</td><td>Orlight 1551S (type L4)</td><td>Lighting Fixtures : .ARK_E_LIF_FL-Wall Light Landlord : Orlight 1551S (type L4)</td><td>19045012</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Structural System Families</div>
+        <div class="structureBreakdown">4 Checks, 4 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of structural system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Floor Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all floor family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Floors : Type : x. Default</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Foundation Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all foundation family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Structural Foundations : Type : -</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Rebar Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all rebar family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Wall Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all wall family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Walls : Type : -</td></tr>
+<tr><td>Walls : Type : .ARK_A_WALL_X-Interior 120mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duplicate Modeled Elements</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any modeled elements that are duplicates (identical elements at the same location and base level). Check will Fail if any duplicate element is found.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Element is a duplicate at the same location and base level.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 195</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Hilti Cast-In Firestop : DN 110</td><td>19797893</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Hilti Cast-In Firestop : DN 110</td><td>19174361</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Hilti Cast-In Firestop : DN 110</td><td>19816111</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Hilti Cast-In Firestop : DN 110</td><td>19815933</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Hilti Cast-In Firestop : DN 110</td><td>19797965</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Hilti Cast-In Firestop</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Hilti Cast-In Firestop : DN 110</td><td>18561543</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18498395</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18512246</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18544394</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507455</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18498942</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18512380</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18538233</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18499196</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18546414</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507616</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507643</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507670</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18503532</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18516821</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18503952</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18512974</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18503979</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18504092</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18502273</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18508264</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18560390</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18512650</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18513082</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18510474</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18510057</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18517412</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18510539</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18513377</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18516363</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18516848</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18517373</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18517399</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18520355</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18520381</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18538099</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18546172</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18528708</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18520609</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18520758</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18521352</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18528548</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18529032</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18537311</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18537526</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18544717</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18544528</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563704</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563733</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563810</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563849</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563981</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564283</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19362355</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564198</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564348</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564224</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564169</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564309</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564480</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564717</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564211</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564520</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564374</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564533</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564704</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19816110</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19122135</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19122199</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19122327</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130526</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130590</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130654</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130718</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19136486</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19136521</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139501</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139629</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139469</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139565</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19145766</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19145830</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19148242</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19148386</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19157853</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19161650</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19161710</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19161798</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19273327</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19360856</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19360890</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19361526</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19361492</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19797964</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19797892</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19361475</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19361176</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19360873</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19360838</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19273115</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19161750</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19161677</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19161628</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19157713</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19148270</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19145862</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19145798</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19145734</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139533</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139437</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139597</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19139405</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19136504</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19136469</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130686</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130622</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130558</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19130494</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19122295</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19122167</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19816118</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19815932</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564620</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564467</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564296</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564361</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19360924</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564546</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564387</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564237</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19361455</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564125</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564270</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563902</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563875</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18564056</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563915</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19362372</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19272492</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18563836</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18547443</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18555313</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18546306</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18545600</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18538422</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18538207</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18537661</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18537177</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18529140</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18538476</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>19148205</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18537337</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18516389</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18545277</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18528574</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18516255</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18516229</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18513390</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18513364</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18512839</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18512354</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18510783</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18510095</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18513403</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18510757</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18509838</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18508210</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507751</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18513136</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18504189</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18508183</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18502053</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18501743</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18508075</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18501693</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18501315</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18500578</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18499347</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18499320</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18499255</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507589</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18545411</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18520515</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507481</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18520489</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18498891</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18537203</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507347</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18507321</td></tr>
+<tr><td>Generic Models</td><td>.ARK_Z_GEN_FL-Opening Fire Collar (slab)</td><td>DN 110</td><td>Generic Models : .ARK_Z_GEN_FL-Opening Fire Collar (slab) : DN 110</td><td>18498054</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Worksets and Elements</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all user worksets for a Revit model or indicates '*Not Workshared*' if worksharing is not enabled.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 16.179</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>10608</td><td>.ARK_P_WST_X-SVP & RWP</td></tr>
+<tr><td>3523</td><td>.ARK_M_WST_X-LTHW & CHW</td></tr>
+<tr><td>971</td><td>.ARK_E_WST_X-Electrical Combined</td></tr>
+<tr><td>417</td><td>.ARK_E_WST_X-Electrical Containment</td></tr>
+<tr><td>165</td><td>.ARK_P_WST_X-BCWS, DWS & SPK</td></tr>
+<tr><td>154</td><td>.ARK_Z_WST_X-RVT Link</td></tr>
+<tr><td>114</td><td>.ARK_Z_WST_X-Levels & Grids (Workset1)</td></tr>
+<tr><td>107</td><td>.ARK_M_WST_X-Mechanical Combined - Plantroom</td></tr>
+<tr><td>58</td><td>.ARK_B_WST_X-BW & Openings</td></tr>
+<tr><td>55</td><td>.ARK_B_WST_X-Unistrut & Hanger</td></tr>
+<tr><td>5</td><td>.ARK_Z_WST_X-Space & HVAC Zone</td></tr>
+<tr><td>2</td><td>.ARK_H_WST_X-Ventilation</td></tr>
+<tr><td>0</td><td>.ARK_M_WST_X-GAS</td></tr>
+<tr><td>0</td><td>.ARK_M_WST_X-Mechanical Combined</td></tr>
+<tr><td>0</td><td>.ARK_M_WST_X-VRF</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+</body>
+</html>
