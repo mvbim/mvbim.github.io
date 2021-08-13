@@ -1,0 +1,1579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Model Checker Report</title>
+    <style type="text/css">
+        /*  Name-agnostic definitions.
+ *  These definitions are just a copy of the definitions further below given a generic name.
+ *  This allows publishers to make a reference to "the page's default font" without having to
+ *  update hundreds of custom pages/styles to match the new name.
+ */
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  Generic "Artifakt" definitions.
+         *  An attempt will be made to map styles to appropriate font-faces when these are used.
+         *  See the definitions below if you wish to use a specific font.
+         */
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Legend" definitions.
+         *   These definitions are for the "Artifakt Legend" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendLight.svg#ArtifaktLegendLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendRegular.svg#ArtifaktLegendRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendMedium.svg#ArtifaktLegendMedium') format('svg');
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Element" definitions.
+         *   These definitions are for the "Artifakt Element" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-weight: 700;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-italic.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementItalic.svg#ArtifaktElementItalic') format('svg');
+            font-style: italic;
+            font-weight: 400;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            font: 100%/1.4 ADSK-Default, Verdana, Arial, Helvetica, sans-serif;
+            background: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin-top: 0; /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+            margin-bottom: 0;
+            padding-right: 0;
+            padding-left: 0; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+        }
+
+        h1, h3 {
+            color: white;
+        }
+
+        h1 {
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-size: 1.5em;
+            margin: 0px;
+        }
+
+        a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+            border: none;
+        }
+
+        /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+        a:link {
+            color: #414958;
+        }
+
+        a:visited {
+            color: #4E5869;
+        }
+
+        a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+            text-decoration: none;
+        }
+
+        /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+        .container {
+            width: 100%;
+            max-width: 1260px; /* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+            min-width: 780px; /* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+            background: #f1f1f1;
+            margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+        }
+
+        /* ~~the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo~~ */
+        .header {
+            background-color: #3b4453;
+            border-bottom: 1px black;
+            padding: 15px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .configContainer {
+            padding: 25px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+		
+		.imageContainer{
+		    width: 125px;
+			height: 125px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.checksetImage{
+		    max-width: 100%;
+			height: auto;
+		}
+
+        .resultData {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .tabBar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0 25px;
+        }
+
+        .tabItem {
+            margin-right: 15px;
+            background: #f9f9f9;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            padding: 15px;
+            color: #bb7a14;
+        }
+
+        .tabItem a, .tabItem a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .tabItemActive {
+            margin-right: 15px;
+            padding: 15px;
+            background: white;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            color: #bb7a14;
+        }
+
+        .tabItemActive a, .tabItemActive a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .portalStandardText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: lighter;
+        }
+
+        .portalHeadlineText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .portal {
+            background: white;
+            margin: 0 25px 25px 25px;
+            padding: 15px;
+        }
+
+        .treeElement {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+
+        .checkResult {
+            border: 1px black solid;
+            padding: 15px;
+            margin-top: 15px;
+            margin-left: 25px;
+            display: grid;
+            justify-content: flex-start;
+            grid-template-columns: auto 1fr;
+        }
+
+        .itemList {
+            width: 100%;
+        }
+
+        .itemList th {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+            background: #f1f1f1;
+            padding: 0 10px;
+        }
+
+        .configData {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-column-gap: 15px;
+            margin-left: 15px
+        }
+
+        .passRate{
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-weight: bold;
+            font-size: 4.5em;
+        }
+        .structureHeading{
+            display: flex;
+        }
+
+        .structureBreakdown{
+            flex: auto;
+            flex-grow: 0;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .structureHeadingText{
+            flex-grow: 1;
+        }
+
+        .overallShown{
+            display: grid;
+            grid-template-rows: auto auto auto;
+            margin: 0 25px;
+        }
+        .overallHidden{
+            display: none;
+        }
+
+        .resultLow {
+            color: rgb(221, 34, 34);
+        }
+
+        .resultHigh {
+            color: rgb(135, 188, 64);
+        }
+
+        .resultMedium {
+            color: rgb(250, 162, 77);
+        }
+
+        .tableScroll{
+            overflow: auto;
+            max-height: 350px;
+            margin-top: 15px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_ModelChecker_24.png" width="24" height="24" style="margin-right: 15px" alt="Autodesk Model Checker for Revit"/>
+        <h1>Autodesk Model Checker for Revit</h1>
+    </div>
+    <div class="configContainer">
+        <div class="imageContainer">
+		    <img src="M:\MV_General_Server\MV_BIM_Consulting\02_MV_Server_Resource_AutoCAD\Logos\MDS logo.png" class="checksetImage" 
+			onerror="this.src = 'https://interoperability.autodesk.com/modelchecker/reports/HeroImage_ModelChecker.png';" 
+			alt="Checkset Image"/>
+		</div>
+        <div class="configData">
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Title</span><span class="portalStandardText">BIM Model Audit</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Date</span><span class="portalStandardText">jueves, 15 de julio de 2021</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Author</span><span class="portalStandardText">MV-BIM / MDS</span>
+            <span class="portalHeadlineText">Description</span><span
+                class="portalStandardText">Series of checks to review modeling best practices and integrity</span>
+        </div>
+    </div>
+    <div class="tabBar">
+        <div class="tabItemActive"><a href="SR-MDS-X0-XX-M3-A-80-1000.html">SR-MDS-X0-XX-M3-A-80-1000</a></div>
+    </div>
+    <div class="portal">
+        <div class="resultData">
+            <div class="overallShown">
+    <span class="passRate resultLow" style="text-align: center">25%</span>
+</div>
+<div style="display: grid; grid-template-columns: auto auto; grid-column-gap: 15px; margin-left: 15px">
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Check Summary</span><span
+        class="portalStandardText">47 Checks, 1 <Span Foreground="#DD2222">(25%)</Span> Pass, 3 Fail, 43 Count/List</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Report Date</span><span
+        class="portalStandardText">viernes, 6 de agosto de 2021 - 17:37:29</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Revit Filepath</span><span
+        class="portalStandardText">M:\MV_General_Server\MV_BIM_Consulting\01_BIM_Projects\200520_Moda Hove\01_WIP\06_BIM Documents\02_BIM Audit Report\01_BIM Model Audit\01\01_Revit Models\MDS\SR-MDS-X0-XX-M3-A-80-1000.rvt</span>
+    <span class="portalHeadlineText">Checkset File</span><span
+        class="portalStandardText">M:\MV_General_Server\MV_BIM_Consulting\14_BIMManagement\5_SoftwareBIM\REVIT\BIM Interoperability Tools\Checksets\BIM Model Audit.xml</span>
+</div>
+        </div>
+    </div>
+    <div class="portal" style="margin-top: 15px">
+        <div>
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">BIM Model Audit</div>
+        <div class="structureBreakdown">47 Checks, 1 <Span Foreground="#DD2222">(25%)</Span> Pass, 3 Fail, 43 Count/List</div>
+    </div>
+    <div class="portalStandardText"></div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Performance</div>
+        <div class="structureBreakdown">7 Checks, 7 Count/List</div>
+    </div>
+    <div class="portalStandardText">Checks in this section help monitor the result of actions taken over the course of a model’s development, which can directly impact the model’s performance. Proper management of these items can improve model performance.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">File Size</div>
+        <div class="portalStandardText" style="text-align: left">RESULT of the file sizes for all reported Revit models in MB (megabytes).</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 25,92 MB</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Warnings</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all warnings in the model. Too many unresolved warnings can cause performance issues in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 48</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Loadable Families</div>
+        <div class="portalStandardText" style="text-align: left">RESULT and LIST of the families in the project ordered by file size.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 21.212 KB</div>
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>GIl_L_FUR_FL-Table-Tenis Table</td><td>620 KB</td></tr>
+<tr><td>MVB_A_PLU_Bib taps</td><td>588 KB</td></tr>
+<tr><td>GIl_L_FUR_FL-T1-Picnic set</td><td>524 KB</td></tr>
+<tr><td>ZZZ_do not use_PF_ST_UN_grating for high capacity gully_ACO</td><td>440 KB</td></tr>
+<tr><td>GIl_L_FUR_FL-Seesaw</td><td>424 KB</td></tr>
+<tr><td>GIL-S7-Stone_Bench</td><td>376 KB</td></tr>
+<tr><td>GIl_L_FUR_FL-Wobbly Calf</td><td>364 KB</td></tr>
+<tr><td>GIl_L_FUR_FL-S1&2-Bench-Bracket</td><td>352 KB</td></tr>
+<tr><td>GIL-LB1-Litter Bin</td><td>340 KB</td></tr>
+<tr><td>ZZZ_do not use_PF_ST_UN_high capacity gully_ACO</td><td>328 KB</td></tr>
+<tr><td>GIL_L_FUR_FA-C2-CycleStand-FaB</td><td>324 KB</td></tr>
+<tr><td>GIl_L_FUR_FL-Wobbly Boarrfa</td><td>324 KB</td></tr>
+<tr><td>MVB_A_PLU_Slot drainage</td><td>316 KB</td></tr>
+<tr><td>GIL_L_FUR_X-PE1-SteppingLog</td><td>316 KB</td></tr>
+<tr><td>GIL_L_SIT_X-BO1-Bollard-Retractable</td><td>316 KB</td></tr>
+<tr><td>ORLLM214</td><td>316 KB</td></tr>
+<tr><td>MVB_TBL-MDS_SplashScreen</td><td>312 KB</td></tr>
+<tr><td>GIl_L_LIG-Mounted Building</td><td>312 KB</td></tr>
+<tr><td>GIl_L_LIG_FL-External Post Ligth</td><td>308 KB</td></tr>
+<tr><td>GIl_L_LIG_FL-Ligth colum</td><td>308 KB</td></tr>
+<tr><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>308 KB</td></tr>
+<tr><td>MVB_L_FUR_Wind Mitigation Screen</td><td>304 KB</td></tr>
+<tr><td>GIl_L_LIG-Mounted Building up&downwards</td><td>304 KB</td></tr>
+<tr><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>304 KB</td></tr>
+<tr><td>MVB_A_VEG_Tree</td><td>3.144 KB</td></tr>
+<tr><td>GIl_L_LIG-Led line</td><td>296 KB</td></tr>
+<tr><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>292 KB</td></tr>
+<tr><td>GIl_L_FUR_FL-Metal stud inset paving</td><td>288 KB</td></tr>
+<tr><td>MVB_EMA-Elevation Detail</td><td>284 KB</td></tr>
+<tr><td>MVB_A_RAI-Steel H bar Baluster Foundation</td><td>280 KB</td></tr>
+<tr><td>MVB_A_RAI-Rectangular Baluster Foundation</td><td>276 KB</td></tr>
+<tr><td>MVB_A_RAI-Stair Baluster</td><td>272 KB</td></tr>
+<tr><td>MVB_A_PRO_Z-Rectangular profile</td><td>264 KB</td></tr>
+<tr><td>MVB_A_PRO_Z-Flush Metal Edge</td><td>260 KB</td></tr>
+<tr><td>MVB_EMA-Elevation Detail pointer</td><td>256 KB</td></tr>
+<tr><td>MVB_DET-Brick</td><td>252 KB</td></tr>
+<tr><td>MVB_A_SMA-Section Detail Head</td><td>248 KB</td></tr>
+<tr><td>MVB_SMA-Section Head</td><td>248 KB</td></tr>
+<tr><td>MVB_SMA-Section Tail-Filled</td><td>244 KB</td></tr>
+<tr><td>MVB_SES-Spot Symbol Triangle</td><td>244 KB</td></tr>
+<tr><td>MVB_CAL_Z-Callout Head</td><td>244 KB</td></tr>
+<tr><td>MVB_A_PRO_Z-Circular Handrail</td><td>244 KB</td></tr>
+<tr><td>MVB_LEH-Levels</td><td>244 KB</td></tr>
+<tr><td>MVB_A_VTI_Z-View Title w Sheet-Ref Sheet</td><td>240 KB</td></tr>
+<tr><td>MVB_GRH-Grid Head</td><td>240 KB</td></tr>
+<tr><td>MVB_VTI-View Title_3.5mm (No Scale)</td><td>240 KB</td></tr>
+<tr><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1.440 KB</td></tr>
+<tr><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>1.440 KB</td></tr>
+<tr><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>1.004 KB</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Purgeable Elements</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all elements that can be purged from a Revit model. A large number of unneeded elements can increase the model size with no benefit. Note that the count reported here may differ from the Purge Unused command in the Revit interface due to API restraints.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 71</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Model Groups</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all model group elements in the model. Too many model groups can be an indication of improper modeling techniques.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Detail Groups</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all detail group elements in the model. Too many detail groups can be an indication of improper modeling techniques.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">In-Place Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all in-place family elements in the model. In-place families can signifcantly impact model size and performance and should be used sparingly.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Project Settings</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText">Checks in this section are related to settings that can be configured at a project level, which may need to be verified for compliance with standards defined for the project.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Revit Version</div>
+        <div class="portalStandardText" style="text-align: left">LIST of the version and build data of Revit running the check.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: Autodesk Revit 2019 20190108_1515(x64)</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Design Options</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all elements created in each design option of the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Elements Per Phase</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all elements in each phase of the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1.294</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>1294</td><td>New Construction</td></tr>
+<tr><td>0</td><td>Existing</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Worksets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all user worksets in the model or indicates '*Not Workshared*' if worksharing is not enabled.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 14</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>MDS-LNK-M3-ARCH-MDS-BA</td></tr>
+<tr><td>MDS-LNK-M3-ARCH-MDS-BB</td></tr>
+<tr><td>MDS-LNK-M3-ARCH-MDS-BC</td></tr>
+<tr><td>MDS-LNK-M3-ARCH-MDS-BD</td></tr>
+<tr><td>MDS-LNK-M3-ARCH-MDS-BE</td></tr>
+<tr><td>MDS-LNK-M3-ARCH-MDS-BF</td></tr>
+<tr><td>MDS-LNK-M3-CIV-JRL-ZZ1</td></tr>
+<tr><td>MDS-LNK-M3-CIV-JRL-ZZ2</td></tr>
+<tr><td>MDS-LNK-M3-MEP-ARK-BX</td></tr>
+<tr><td>MVB_CTRL_WKS_M3-ReferenceControl</td></tr>
+<tr><td>MVB_CTRL_WKS_M3-ScopeBoxes</td></tr>
+<tr><td>MVB_DTM_WKS_M3-Levels and Grids</td></tr>
+<tr><td>MVB_MDL_WKS_M3-Main Model</td></tr>
+<tr><td>Workset1 (Do not use)</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Project Coordinates</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of the coordinate values of the survey and project base points, elevation, and true north.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 5</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>Project Base Point Coordinate</td><td>528453545 E/W  |  105770360 N/S</td></tr>
+<tr><td>Project Base Point Elevation</td><td>29100</td></tr>
+<tr><td>Project Base Point Rotation</td><td>3.15°</td></tr>
+<tr><td>Survey Point Coordinate</td><td>0 E/W  |  0 N/S</td></tr>
+<tr><td>Survey Point Elevation</td><td>0</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">External Files</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to linked and imported files in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Linked Revit Files and Their Link Method</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of the link method (overlay vs. attach) for each Revit link in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Linked CAD Files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all linked CAD files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Imported CAD files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all CAD files that were Imported and not Linked.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Imported SKP files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all imported SKP files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Raster Images</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all raster images placed in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Levels and Grids</div>
+        <div class="structureBreakdown">2 Checks, 2 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to levels and grids in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Levels</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all level elements in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 6</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Grids</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all grid elements in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Views & Sheets</div>
+        <div class="structureBreakdown">3 Checks, 3 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to views in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Views Not On Sheets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all views (not including views that can be placed on more than one sheet, like Schedules and Legends) that are not placed on a sheet in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 9</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>3D View - 01_LAN</td></tr>
+<tr><td>3D View - 02_Federated_LAN, ARCH, MEP, STR & CIV</td></tr>
+<tr><td>3D View - 03_Federated_LAN & ARCH</td></tr>
+<tr><td>3D View - 04_Federated_LAN & STR</td></tr>
+<tr><td>3D View - 05_Federated_LAN & MEP</td></tr>
+<tr><td>3D View - 06_Federated_LAN & CIV</td></tr>
+<tr><td>3D View - LAN_COORD_Green Zones</td></tr>
+<tr><td>3D View - LAN_COORD_Landscape</td></tr>
+<tr><td>3D View - LAN_GEN_Complete</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Sheets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all sheets in the model. Sheets typically do not impact model size, but too many unmanaged views can impact user efficiency.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Schedules</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all schedules in the model. Schedules typically do not impact model size, but too many unmanaged views can impact user efficiency.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Elements</div>
+        <div class="structureBreakdown">25 Checks, 1 <Span Foreground="#DD2222">(25%)</Span> Pass, 3 Fail, 21 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to model elements in the model.</div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Arch System Families</div>
+        <div class="structureBreakdown">10 Checks, 10 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of architectural system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Ceiling Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all ceiling family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ceilings : Type : Ceiling 1</td></tr>
+<tr><td>Ceilings : Type : MVB_A_CEI_X-C1 85mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Curtain System</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all architectural curtain system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Curtain Systems : Type : Standard</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Curtain Wall Mullion Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all curtain wall mullion family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Floor Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all floor family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 18</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT1.1_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT1.2_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT10_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT11_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT12_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT2_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT3_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT4_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT5_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT6_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT7_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT8_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT9_85mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S1 - ORNAMENTAL PLANTING_750mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S2 - LAWN_400mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S3 - XXX</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S4 - HEDGE PLANTING_750mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-XXX_250</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Railing Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all railing family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 10</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Railings : Type : Balaustrade without foundation</td></tr>
+<tr><td>Railings : Type : Balautrade Sackville Road</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT1</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT2</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT3</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT3 200</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT4</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT5</td></tr>
+<tr><td>Railings : Type : MVB_RAI-KT6</td></tr>
+<tr><td>Railings : Type : Sleeper wall</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Ramp Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all ramp family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ramps : Type : Ramp 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Roof Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all roof family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Roofs : Type : Roof 2</td></tr>
+<tr><td>Roofs : Type : Sloped Glazing</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Site Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all site family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Site : Type : GIL_L_SIT_X-BO1-Bollard-Retractable : GIL_L_SIT_X-BO1-Bollard-Retractable</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Stair Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all stair family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 4</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Stairs : Type : MVB_A_STA_X-Cast In Place Stair</td></tr>
+<tr><td>Stairs : Type : Precast Stair</td></tr>
+<tr><td>Stairs : Type : Stairs 1</td></tr>
+<tr><td>Stairs : Type : Stairs 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Wall Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all wall family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 9</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Walls : Type : MVB_A_CW_X-Facade</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X- Gabion Retainig Wall 2000mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Existing Wall 200mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Existing Wall 300mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Existing Wall 400mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Gabion Retaining Wall 750mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-I1 215mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-New brick Wall 300mm</td></tr>
+<tr><td>Walls : Type : Wall 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">MEP System Families</div>
+        <div class="structureBreakdown">9 Checks, 1 <Span Foreground="#DD2222">(33%)</Span> Pass, 2 Fail, 6 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of MEP system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all duct family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 3</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ducts : Type : Default</td></tr>
+<tr><td>Ducts : Type : Default</td></tr>
+<tr><td>Ducts : Type : Default</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct System Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all duct system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 3</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Duct Systems : Type : Exhaust Air</td></tr>
+<tr><td>Duct Systems : Type : Return Air</td></tr>
+<tr><td>Duct Systems : Type : Supply Air</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Pass_26.png" alt="PASS" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any duct related elements that have a blank System Name.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Flex Duct Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all flex duct family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Flex Ducts : Type : Flex - Rectangular</td></tr>
+<tr><td>Flex Ducts : Type : Flex - Round</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Flex Pipe Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all flex pipe family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Flex Pipes : Type : Flex - Round</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Pipe Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all pipe family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Pipes : Type : Default</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Piping System Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all piping system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 10</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Piping Systems : Type : Domestic Cold Water</td></tr>
+<tr><td>Piping Systems : Type : Domestic Hot Water</td></tr>
+<tr><td>Piping Systems : Type : Fire Protection Dry</td></tr>
+<tr><td>Piping Systems : Type : Fire Protection Other</td></tr>
+<tr><td>Piping Systems : Type : Fire Protection Pre-Action</td></tr>
+<tr><td>Piping Systems : Type : Fire Protection Wet</td></tr>
+<tr><td>Piping Systems : Type : Hydronic Return</td></tr>
+<tr><td>Piping Systems : Type : Hydronic Supply</td></tr>
+<tr><td>Piping Systems : Type : Sanitary</td></tr>
+<tr><td>Piping Systems : Type : Vent</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Piping Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any piping related elements that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are piping related elements that that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 53</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892742</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892887</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892899</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892977</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893013</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893028</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893131</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893151</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893174</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893317</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893376</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893323</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893180</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893157</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893137</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893090</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9893019</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892995</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892905</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892893</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892852</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892727</td></tr>
+<tr><td>Pipe Fittings</td><td>ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO</td><td>std (nested)</td><td>Pipe Fittings : ZZZ_do_not_use_PIF_ST_UN_silt basket for hygienic high capacity gullies_ACO : std (nested)</td><td>9892575</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>10012804</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>10014480</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>10016990</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>9995777</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>10009094</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>9993113</td></tr>
+<tr><td>Plumbing Fixtures</td><td>MVB_A_PLU_Bib taps</td><td>3300</td><td>Plumbing Fixtures : MVB_A_PLU_Bib taps : 3300</td><td>9991576</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893015</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893024</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893127</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893133</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893147</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893170</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893176</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893313</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893372</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893319</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893153</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893086</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892889</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892895</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892901</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892973</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9893009</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892991</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892848</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892883</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892738</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892723</td></tr>
+<tr><td>Plumbing Fixtures</td><td>PF_ST_UN_hygienic high capacity gully_ACO</td><td>W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>Plumbing Fixtures : PF_ST_UN_hygienic high capacity gully_ACO : W600 grade 1.4301 hygienic high capacity gully outlet 200</td><td>9892571</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Electrical Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any electrical related elements that have a blank Panel Name or Circuit Number.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are electrical related elements that have a blank Panel Name or Circuit Number.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 204</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 1 Point of Charge</td><td>10016099</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 1 Point of Charge</td><td>10016561</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 1 Point of Charge</td><td>10016217</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 1 Point of Charge</td><td>10016081</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>9997448</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>9997418</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10014791</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10014699</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10014596</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>9997470</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10014915</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10015403</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10015201</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10015125</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>10015011</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Active Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Active Electric Charging Point : 2 Points of Charge</td><td>9997413</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10016384</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10016488</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10018169</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10018405</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10018359</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10018225</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10018164</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10016432</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>1 Point of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 1 Point of Charge</td><td>10016379</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 2 Points of Charge</td><td>9997203</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 2 Points of Charge</td><td>9997361</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 2 Points of Charge</td><td>9997279</td></tr>
+<tr><td>Electrical Equipment</td><td>GIL_L_ELE_FL-Passive Electric Charging Point</td><td>2 Points of Charge</td><td>Electrical Equipment : GIL_L_ELE_FL-Passive Electric Charging Point : 2 Points of Charge</td><td>9997198</td></tr>
+<tr><td>Electrical Fixtures</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>Electrical Fixtures : GIL_L_ELE_FL-Pop up Power Outlets : GIL_L_ELE_FL-Pop up Power Outlets</td><td>9993303</td></tr>
+<tr><td>Electrical Fixtures</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>Electrical Fixtures : GIL_L_ELE_FL-Pop up Power Outlets : GIL_L_ELE_FL-Pop up Power Outlets</td><td>9995647</td></tr>
+<tr><td>Electrical Fixtures</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>Electrical Fixtures : GIL_L_ELE_FL-Pop up Power Outlets : GIL_L_ELE_FL-Pop up Power Outlets</td><td>9994578</td></tr>
+<tr><td>Electrical Fixtures</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>Electrical Fixtures : GIL_L_ELE_FL-Pop up Power Outlets : GIL_L_ELE_FL-Pop up Power Outlets</td><td>9993026</td></tr>
+<tr><td>Electrical Fixtures</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>GIL_L_ELE_FL-Pop up Power Outlets</td><td>Electrical Fixtures : GIL_L_ELE_FL-Pop up Power Outlets : GIL_L_ELE_FL-Pop up Power Outlets</td><td>9993004</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9958229</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9962696</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9958137</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9993884</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9996116</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9996215</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>10017436</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>10017354</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>10016944</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9995987</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9995937</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9993827</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9991810</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9964001</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9992409</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9992372</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>10009254</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>10008677</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9964402</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>GIl_L_LIG_FL-External Post Ligth</td><td>Lighting Fixtures : GIl_L_LIG_FL-External Post Ligth : GIl_L_LIG_FL-External Post Ligth</td><td>9956446</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>9959901</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10012229</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10015908</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10015828</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10008575</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018491</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018547</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018574</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018562</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018529</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10017606</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10017642</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10017954</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018106</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10018000</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10017895</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10017856</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>9958236</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>9955520</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10012431</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>10012346</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Ligth colum</td><td>GIl_L_LIG_FL-Ligth colum</td><td>Lighting Fixtures : GIl_L_LIG_FL-Ligth colum : GIl_L_LIG_FL-Ligth colum</td><td>9955442</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991888</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991874</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991859</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991937</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991929</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991916</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>10008397</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>10008388</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>10008381</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>10008376</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>Lighting Fixtures : GIl_L_LIG_FL-Mounted Wall Upligthers : GIl_L_LIG_FL-Mounted Wall Upligthers</td><td>9991849</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026755</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026923</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10027086</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10027223</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030494</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030497</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030499</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030501</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030503</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030505</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030507</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030509</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030511</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030510</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030508</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030506</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030504</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030502</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030500</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030498</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10030496</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10027258</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10027175</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10027021</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026834</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026657</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026278</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026224</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026352</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026452</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026579</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026502</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026363</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Led line</td><td>GIl_L_LIG-Led line</td><td>Lighting Fixtures : GIl_L_LIG-Led line : GIl_L_LIG-Led line</td><td>10026110</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9966270</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9992663</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10017754</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10017825</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10017511</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10017569</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9994608</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10016729</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9966262</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9966243</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9966252</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9994012</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10016058</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9993921</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9992684</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10012531</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10013658</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10014428</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10014387</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10013619</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10009500</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10012075</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10012042</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10009495</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10009145</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>10008201</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9992728</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9992756</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9992704</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9996352</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9997180</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9994976</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building</td><td>GIl_L_LIG-Mounted Building</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building : GIl_L_LIG-Mounted Building</td><td>9966180</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>10008320</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>10008317</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>9995306</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>9995249</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>10008300</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>10008239</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>9995168</td></tr>
+<tr><td>Lighting Fixtures</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>GIl_L_LIG-Mounted Building up&downwards</td><td>Lighting Fixtures : GIl_L_LIG-Mounted Building up&downwards : GIl_L_LIG-Mounted Building up&downwards</td><td>9995097</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994500</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9992347</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9992291</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9991530</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9991561</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9991554</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9991523</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9964775</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9964887</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9964894</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9964861</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994118</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994161</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>10030698</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>10030859</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>10031396</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994224</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994319</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994352</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994377</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994439</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994468</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994473</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994406</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994294</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9994108</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9964083</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9992193</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9992199</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9992205</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9992186</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9964032</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9958159</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9958201</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9958211</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9958166</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9956477</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9956470</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9955618</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9955611</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9955564</td></tr>
+<tr><td>Lighting Fixtures</td><td>ORLLM214</td><td>ORLLM214-3000K</td><td>Lighting Fixtures : ORLLM214 : ORLLM214-3000K</td><td>9955552</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Structural System Families</div>
+        <div class="structureBreakdown">4 Checks, 4 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of structural system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Floor Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all floor family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 18</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT1.1_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT1.2_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT10_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT11_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT12_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT2_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT3_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT4_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT5_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT6_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT7_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT8_250mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-PT9_85mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S1 - ORNAMENTAL PLANTING_750mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S2 - LAWN_400mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S3 - XXX</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-S4 - HEDGE PLANTING_750mm</td></tr>
+<tr><td>Floors : Type : MVB_A_FLO_X-XXX_250</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Foundation Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all foundation family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Structural Foundations : Type : Foundation Slab 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Rebar Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all rebar family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Wall Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all wall family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 9</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Walls : Type : MVB_A_CW_X-Facade</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X- Gabion Retainig Wall 2000mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Existing Wall 200mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Existing Wall 300mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Existing Wall 400mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-Gabion Retaining Wall 750mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-I1 215mm</td></tr>
+<tr><td>Walls : Type : MVB_A_WALL_X-New brick Wall 300mm</td></tr>
+<tr><td>Walls : Type : Wall 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duplicate Modeled Elements</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any modeled elements that are duplicates (identical elements at the same location and base level). Check will Fail if any duplicate element is found.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Element is a duplicate at the same location and base level.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Furniture</td><td>GIL-LB1-Litter Bin</td><td>GIL-LB1-Litter Bin</td><td>Furniture : GIL-LB1-Litter Bin : GIL-LB1-Litter Bin</td><td>10012369</td></tr>
+<tr><td>Furniture</td><td>GIL-LB1-Litter Bin</td><td>GIL-LB1-Litter Bin</td><td>Furniture : GIL-LB1-Litter Bin : GIL-LB1-Litter Bin</td><td>10012009</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Worksets and Elements</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all user worksets for a Revit model or indicates '*Not Workshared*' if worksharing is not enabled.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 7.854</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>7785</td><td>MVB_MDL_WKS_M3-Main Model</td></tr>
+<tr><td>43</td><td>Workset1 (Do not use)</td></tr>
+<tr><td>18</td><td>MDS-LNK-M3-ARCH-MDS-BF</td></tr>
+<tr><td>8</td><td>MVB_DTM_WKS_M3-Levels and Grids</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-ARCH-MDS-BA</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-ARCH-MDS-BB</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-ARCH-MDS-BC</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-ARCH-MDS-BD</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-ARCH-MDS-BE</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-CIV-JRL-ZZ1</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-CIV-JRL-ZZ2</td></tr>
+<tr><td>0</td><td>MDS-LNK-M3-MEP-ARK-BX</td></tr>
+<tr><td>0</td><td>MVB_CTRL_WKS_M3-ReferenceControl</td></tr>
+<tr><td>0</td><td>MVB_CTRL_WKS_M3-ScopeBoxes</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+</body>
+</html>
