@@ -1,0 +1,1833 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Model Checker Report</title>
+    <style type="text/css">
+        /*  Name-agnostic definitions.
+ *  These definitions are just a copy of the definitions further below given a generic name.
+ *  This allows publishers to make a reference to "the page's default font" without having to
+ *  update hundreds of custom pages/styles to match the new name.
+ */
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'ADSK-Default';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  Generic "Artifakt" definitions.
+         *  An attempt will be made to map styles to appropriate font-faces when these are used.
+         *  See the definitions below if you wish to use a specific font.
+         */
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Legend" definitions.
+         *   These definitions are for the "Artifakt Legend" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendLight.svg#ArtifaktLegendLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendRegular.svg#ArtifaktLegendRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Legend';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Legend Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-legend-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktLegendMedium.svg#ArtifaktLegendMedium') format('svg');
+            font-weight: 700;
+        }
+
+
+        /*  "Artifakt Element" definitions.
+         *   These definitions are for the "Artifakt Element" series of font faces.
+         */
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Light.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-light.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementLight.svg#ArtifaktElementLight') format('svg');
+            font-weight: 300;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Regular.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-regular.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementRegular.svg#ArtifaktElementRegular') format('svg');
+            font-weight: 400;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Medium.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-medium.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementMedium.svg#ArtifaktElementMedium') format('svg');
+            font-weight: 700;
+        }
+
+        @font-face{
+            font-family:'Artifakt Element';
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix');
+            src:url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.eot?#iefix') format('eot'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/Artifakt Element Italic.woff') format('woff'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/artifakt-element-italic.ttf') format('truetype'),
+            url('https://static-dc.autodesk.net/etc/designs/v201806182109/templates-general/structure/fonts/artifakt/clientlibs/fontfiles/ArtifaktElementItalic.svg#ArtifaktElementItalic') format('svg');
+            font-style: italic;
+            font-weight: 400;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            font: 100%/1.4 ADSK-Default, Verdana, Arial, Helvetica, sans-serif;
+            background: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin-top: 0; /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+            margin-bottom: 0;
+            padding-right: 0;
+            padding-left: 0; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+        }
+
+        h1, h3 {
+            color: white;
+        }
+
+        h1 {
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-size: 1.5em;
+            margin: 0px;
+        }
+
+        a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+            border: none;
+        }
+
+        /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+        a:link {
+            color: #414958;
+        }
+
+        a:visited {
+            color: #4E5869;
+        }
+
+        a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+            text-decoration: none;
+        }
+
+        /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+        .container {
+            width: 100%;
+            max-width: 1260px; /* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+            min-width: 780px; /* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+            background: #f1f1f1;
+            margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+        }
+
+        /* ~~the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo~~ */
+        .header {
+            background-color: #3b4453;
+            border-bottom: 1px black;
+            padding: 15px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .configContainer {
+            padding: 25px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+		
+		.imageContainer{
+		    width: 125px;
+			height: 125px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.checksetImage{
+		    max-width: 100%;
+			height: auto;
+		}
+
+        .resultData {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .tabBar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0 25px;
+        }
+
+        .tabItem {
+            margin-right: 15px;
+            background: #f9f9f9;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            padding: 15px;
+            color: #bb7a14;
+        }
+
+        .tabItem a, .tabItem a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .tabItemActive {
+            margin-right: 15px;
+            padding: 15px;
+            background: white;
+            font-family: "Artifakt Element", Arial, sans-serif;
+            color: #bb7a14;
+        }
+
+        .tabItemActive a, .tabItemActive a:visited {
+            text-decoration: none;
+            color: #bb7a14;
+        }
+
+        .portalStandardText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: lighter;
+        }
+
+        .portalHeadlineText {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .portal {
+            background: white;
+            margin: 0 25px 25px 25px;
+            padding: 15px;
+        }
+
+        .treeElement {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+
+        .checkResult {
+            border: 1px black solid;
+            padding: 15px;
+            margin-top: 15px;
+            margin-left: 25px;
+            display: grid;
+            justify-content: flex-start;
+            grid-template-columns: auto 1fr;
+        }
+
+        .itemList {
+            width: 100%;
+        }
+
+        .itemList th {
+            font-family: "Artifakt Element", Arial, sans-serif;
+            font-weight: bold;
+            background: #f1f1f1;
+            padding: 0 10px;
+        }
+
+        .configData {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-column-gap: 15px;
+            margin-left: 15px
+        }
+
+        .passRate{
+            font-family: "Artifakt Legend", Arial, sans-serif;
+            font-weight: bold;
+            font-size: 4.5em;
+        }
+        .structureHeading{
+            display: flex;
+        }
+
+        .structureBreakdown{
+            flex: auto;
+            flex-grow: 0;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .structureHeadingText{
+            flex-grow: 1;
+        }
+
+        .overallShown{
+            display: grid;
+            grid-template-rows: auto auto auto;
+            margin: 0 25px;
+        }
+        .overallHidden{
+            display: none;
+        }
+
+        .resultLow {
+            color: rgb(221, 34, 34);
+        }
+
+        .resultHigh {
+            color: rgb(135, 188, 64);
+        }
+
+        .resultMedium {
+            color: rgb(250, 162, 77);
+        }
+
+        .tableScroll{
+            overflow: auto;
+            max-height: 350px;
+            margin-top: 15px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_ModelChecker_24.png" width="24" height="24" style="margin-right: 15px" alt="Autodesk Model Checker for Revit"/>
+        <h1>Autodesk Model Checker for Revit</h1>
+    </div>
+    <div class="configContainer">
+        <div class="imageContainer">
+		    <img src="T:\TEMP_BIM LEAD\MDS Logo.PNG" class="checksetImage" 
+			onerror="this.src = 'https://interoperability.autodesk.com/modelchecker/reports/HeroImage_ModelChecker.png';" 
+			alt="Checkset Image"/>
+		</div>
+        <div class="configData">
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Title</span><span class="portalStandardText">BIM Model Audit</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Date</span><span class="portalStandardText">martes, 14 de septiembre de 2021</span>
+            <span class="portalHeadlineText" style="margin-bottom: 15px">Author</span><span class="portalStandardText">MV-BIM / MDS</span>
+            <span class="portalHeadlineText">Description</span><span
+                class="portalStandardText">Series of checks to review modeling best practices and integrity</span>
+        </div>
+    </div>
+    <div class="tabBar">
+        <div class="tabItemActive"><a href="CP-ARK-WT-ZZ-CM-M-80-0001.html">CP-ARK-WT-ZZ-CM-M-80-0001</a></div>
+    </div>
+    <div class="portal">
+        <div class="resultData">
+            <div class="overallShown">
+    <span class="passRate resultLow" style="text-align: center">50%</span>
+</div>
+<div style="display: grid; grid-template-columns: auto auto; grid-column-gap: 15px; margin-left: 15px">
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Check Summary</span><span
+        class="portalStandardText">47 Checks, 2 <Span Foreground="#DD2222">(50%)</Span> Pass, 2 Fail, 43 Count/List</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Report Date</span><span
+        class="portalStandardText">jueves, 16 de septiembre de 2021 - 12:11:51</span>
+    <span class="portalHeadlineText" style="margin-bottom: 15px">Revit Filepath</span><span
+        class="portalStandardText">C:\Users\ricardo.oei\Desktop\CONSORT PLACE\02_BIM Audit\01_BIM Models Audit\RVT\CP-ARK-WT-ZZ-CM-M-80-0001.rvt</span>
+    <span class="portalHeadlineText">Checkset File</span><span
+        class="portalStandardText">B:\TEMPORAL SSD\TEMP_BIM LEAD\BIM Model Audit.xml</span>
+</div>
+        </div>
+    </div>
+    <div class="portal" style="margin-top: 15px">
+        <div>
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">BIM Model Audit</div>
+        <div class="structureBreakdown">47 Checks, 2 <Span Foreground="#DD2222">(50%)</Span> Pass, 2 Fail, 43 Count/List</div>
+    </div>
+    <div class="portalStandardText"></div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Performance</div>
+        <div class="structureBreakdown">7 Checks, 7 Count/List</div>
+    </div>
+    <div class="portalStandardText">Checks in this section help monitor the result of actions taken over the course of a model’s development, which can directly impact the model’s performance. Proper management of these items can improve model performance.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">File Size</div>
+        <div class="portalStandardText" style="text-align: left">RESULT of the file sizes for all reported Revit models in MB (megabytes).</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 140,25 MB</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Warnings</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all warnings in the model. Too many unresolved warnings can cause performance issues in a Revit model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 134</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Loadable Families</div>
+        <div class="portalStandardText" style="text-align: left">RESULT and LIST of the families in the project ordered by file size.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: 61.360 KB</div>
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>zzz.ARK_Xpot XP</td><td>992 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Strainer Flanged DN50-300</td><td>984 KB</td></tr>
+<tr><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>964 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Pipe Clamp</td><td>828 KB</td></tr>
+<tr><td>.ARK_M_MEC_FL-Ball Valve Threaded DN15-100 (ByPass IN-OUT)</td><td>764 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Check Valve Flanged DN50-300</td><td>748 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Pressure Reducer Threaded DN15-100</td><td>724 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Suction Diffuser Flanged DN50-300</td><td>708 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100 Lockable</td><td>696 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Commissioning Valve Threaded DN15-50</td><td>660 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>644 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Drain Valve Threaded DN15-25</td><td>644 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Surge Arrestor Riser Valve DN25</td><td>592 KB</td></tr>
+<tr><td>AM45-ES</td><td>584 KB</td></tr>
+<tr><td>ZZZ.WSP_Pipe Fittings_Victaulic_IPS_SS_ConcentricReducer_No_450</td><td>576 KB</td></tr>
+<tr><td>ZZZ.WSP_Pipe Fittings_Victaulic_IPS_SS_ReducingTee_No_420_425</td><td>572 KB</td></tr>
+<tr><td>ZZZ.WSP_Pipe Fittings_Victaulic_IPS_SS_Elbow_No_410_413</td><td>568 KB</td></tr>
+<tr><td>ZZZ.WSP_Pipe Fittings_Victaulic_IPS_SSCap_No_460</td><td>552 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Strainer Threaded DN15-50</td><td>544 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Double Check Valve Threaded DN15-50</td><td>512 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Butterfly Valve Flanged DN65-200</td><td>512 KB</td></tr>
+<tr><td>zzz. HL_WaterMeter</td><td>468 KB</td></tr>
+<tr><td>.ARK_E_CNF_FL-Conduit Tee Box</td><td>464 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-FlowFU Provision BCWS</td><td>456 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-Clearance Zone Cylinder Vertical</td><td>448 KB</td></tr>
+<tr><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>444 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Automatic Air Vent</td><td>444 KB</td></tr>
+<tr><td>Butterfly Valve Wheel Operated 50-600mm Flanged</td><td>436 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Lateral 45° Flanged</td><td>416 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Reducer</td><td>416 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cross Flanged</td><td>416 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Expansion Rubber Bellow Flanged DN65-300</td><td>416 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Reduced Flanged</td><td>412 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Flanged</td><td>412 KB</td></tr>
+<tr><td>.ARK_H_DUF_FL-Insulated Rectangular Reducer</td><td>412 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Vertical Inside Bend</td><td>412 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Vertical Outside Bend</td><td>412 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Flat Bend</td><td>412 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Elbow eFusion</td><td>412 KB</td></tr>
+<tr><td>Rectangular - Oval Transformation - Slip Joint</td><td>408 KB</td></tr>
+<tr><td>.ARK_H_DUF_FL-Insulated Rectangular Round Transition</td><td>408 KB</td></tr>
+<tr><td>Rectangular Radius Tee - Flanged</td><td>408 KB</td></tr>
+<tr><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>404 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Cross</td><td>404 KB</td></tr>
+<tr><td>Rectangular Square Tee - Flanged</td><td>400 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Elbow Butt Fusion (d160)</td><td>400 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Tee</td><td>400 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Reducer Flanged</td><td>400 KB</td></tr>
+<tr><td>.ARK_H_DUF_FL-Insulated Round Reducer</td><td>392 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cross Welded</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Test Point</td><td>388 KB</td></tr>
+<tr><td>Rectangular - Round Transformation - Flanged</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Flange Steel eFusion (union)</td><td>388 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Flange Steel Butt Fusion (d160) (union)</td><td>384 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>384 KB</td></tr>
+<tr><td>.ARK_H_DUF_FL-Insulated Round Bend</td><td>384 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-MDPE Cap eFusion</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Elbow Flanged</td><td>380 KB</td></tr>
+<tr><td>Rectangular Medium Radius Bend - Flanged</td><td>380 KB</td></tr>
+<tr><td>M_T Connection</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Reducer Threaded</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Branch Takeoff</td><td>380 KB</td></tr>
+<tr><td>Rectangular Short Radius Bend - Flanged</td><td>380 KB</td></tr>
+<tr><td>M_Transition square to circular</td><td>380 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Elbow Welded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cap Welded</td><td>376 KB</td></tr>
+<tr><td>M_Switch round</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Flange WeldNeck</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cross Threaded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Reduced Welded</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Flange WeldNeck (union)</td><td>376 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Opening (slab)</td><td>376 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Twin Elbow Welded</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Elbow Threaded</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Branch Takeoff</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Tee Reduced Threaded</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Reducer Welded</td><td>372 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Reducer</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Reducer Butt Fusion (d160)</td><td>368 KB</td></tr>
+<tr><td>Controls_Ecosmart_ES-ISC_Size_2</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Flange Blind</td><td>368 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Coupling Threaded</td><td>368 KB</td></tr>
+<tr><td>Rectangular Shoe Branch - Flanged</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Cross eFusion</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Tee Reduced Butt Fusion (d160)</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Cap eFusion</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Coupling Socket</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Elbow</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Coupling eFusion</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Tee Reducer</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Tee Reduced eFusion</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-PP-R Reducer eFusion</td><td>364 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-Clearance Zone Cylinder</td><td>364 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Cap Threaded</td><td>364 KB</td></tr>
+<tr><td>M_Transition circular - Angle</td><td>364 KB</td></tr>
+<tr><td>Rectangular Concentric Taper - Flanged</td><td>364 KB</td></tr>
+<tr><td>.ARK_Z_GEN_Z-Clearance Zone Angle</td><td>360 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-cPVC Coupling</td><td>360 KB</td></tr>
+<tr><td>.ARK_M_PIF_FL-CS Coupling Welded</td><td>360 KB</td></tr>
+<tr><td>Rectangular Square Bend - Flanged</td><td>360 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FL-Opening (wall)</td><td>360 KB</td></tr>
+<tr><td>.ARK_E_CNF_FL-Conduit Plain Bend</td><td>360 KB</td></tr>
+<tr><td>.ARK_Z_GEN_FA-Access Panel</td><td>356 KB</td></tr>
+<tr><td>.ARK_E_CTF_FL-Tray Union</td><td>352 KB</td></tr>
+<tr><td>.ARK_SplashScreen</td><td>352 KB</td></tr>
+<tr><td>.ARK_E_CNF_FL-Conduit Reducer DN20-25</td><td>352 KB</td></tr>
+<tr><td>.ARK_E_CNF_FL-Conduit Coupling</td><td>352 KB</td></tr>
+<tr><td>Round Blank End</td><td>344 KB</td></tr>
+<tr><td>zzz.ARK_Pressurisation Unit VESSEL</td><td>344 KB</td></tr>
+<tr><td>Rectangular Blank End</td><td>344 KB</td></tr>
+<tr><td>M_Union round</td><td>340 KB</td></tr>
+<tr><td>Rectangular Union</td><td>340 KB</td></tr>
+<tr><td>Balusters_Rectangular</td><td>328 KB</td></tr>
+<tr><td>.ARK_Z_SEC_Z-Section Head Sheet</td><td>300 KB</td></tr>
+<tr><td>.ARK_Z_SEC_Z-Section Head Working</td><td>296 KB</td></tr>
+<tr><td>.ARK_Z_LEH_Z-Level Head FFL</td><td>296 KB</td></tr>
+<tr><td>.ARK_Z_SES_Z-Spot Elevation Target</td><td>292 KB</td></tr>
+<tr><td>.ARK_Z_VTI_Z-View Title</td><td>292 KB</td></tr>
+<tr><td>.ARK_Z_EMA_Z-Elevation Mark</td><td>292 KB</td></tr>
+<tr><td>.ARK_Z_GRH_Z-Grid Head Circle</td><td>288 KB</td></tr>
+<tr><td>.ARK_Z_SEC_Z-Section Tail Working</td><td>288 KB</td></tr>
+<tr><td>.ARK_Z_MEC_FL-Apartment Interface - WT</td><td>2.252 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-Fire Sprinkler Valve Set Threaded DN40-50</td><td>1.528 KB</td></tr>
+<tr><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>1.388 KB</td></tr>
+<tr><td>zzz.DPCV</td><td>1.100 KB</td></tr>
+<tr><td>sertus_pod_rmp-r-se</td><td>1.096 KB</td></tr>
+<tr><td>.ARK_Z_PIF_FL-Pipe Clamp</td><td>1.040 KB</td></tr>
+<tr><td>.ARK_M_PIA_FL-eActuator 2way Valve Flanged DN15-150</td><td>1.000 KB</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Unused Elements</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all elements that may be unused and therefore removed from a Revit model. A large number of unneeded elements can increase the model size with no benefit. Note that the count reported here may differ from the Purge Unused command in the Revit interface due to API restraints.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 209</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Model Groups</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all model group elements in the model. Too many model groups can be an indication of improper modeling techniques.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Detail Groups</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all detail group elements in the model. Too many detail groups can be an indication of improper modeling techniques.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">In-Place Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all in-place family elements in the model. In-place families can signifcantly impact model size and performance and should be used sparingly.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Project Settings</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText">Checks in this section are related to settings that can be configured at a project level, which may need to be verified for compliance with standards defined for the project.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="CUSTOM RESULT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Revit Version</div>
+        <div class="portalStandardText" style="text-align: left">LIST of the version and build data of Revit running the check.</div>
+        
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Result: Autodesk Revit 2019 20190108_1515(x64)</div>
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Design Options</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all elements created in each design option of the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Elements Per Phase</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all elements in each phase of the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 33.723</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>33723</td><td>New Construction</td></tr>
+<tr><td>0</td><td>Existing</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Worksets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all user worksets in the model or indicates '*Not Workshared*' if worksharing is not enabled.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 20</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>.ARK_A_WST_X-Proposed Arch (temporary)</td></tr>
+<tr><td>.ARK_B_WST_X-BW & Openings</td></tr>
+<tr><td>.ARK_B_WST_X-Unistrut & Hanger</td></tr>
+<tr><td>.ARK_E_WST_X-Electrical Combined</td></tr>
+<tr><td>.ARK_E_WST_X-Electrical Combined - Equipment</td></tr>
+<tr><td>.ARK_E_WST_X-Electrical Containment</td></tr>
+<tr><td>.ARK_H_WST_X-Ventilation</td></tr>
+<tr><td>.ARK_M_WST_X-GAS</td></tr>
+<tr><td>.ARK_M_WST_X-LTHW & CHW</td></tr>
+<tr><td>.ARK_M_WST_X-Mechanical Combined</td></tr>
+<tr><td>.ARK_M_WST_X-Mechanical Combined - Plantroom</td></tr>
+<tr><td>.ARK_M_WST_X-VRF</td></tr>
+<tr><td>.ARK_P_WST_X-BCWS, DWS & SPK</td></tr>
+<tr><td>.ARK_P_WST_X-SVP - Flat Distribution</td></tr>
+<tr><td>.ARK_P_WST_X-SVP & RWP</td></tr>
+<tr><td>.ARK_Z_WST_X-Levels & Grids (Workset1)</td></tr>
+<tr><td>.ARK_Z_WST_X-RVT Link</td></tr>
+<tr><td>.ARK_Z_WST_X-Space & HVAC Zone</td></tr>
+<tr><td>temp.JMM</td></tr>
+<tr><td>temp.SS</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Project Coordinates</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of the coordinate values of the survey and project base points, elevation, and true north.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 5</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>Project Base Point Coordinate</td><td>537237749 E/W  |  179796598 N/S</td></tr>
+<tr><td>Project Base Point Elevation</td><td>0</td></tr>
+<tr><td>Project Base Point Rotation</td><td>3.54°</td></tr>
+<tr><td>Survey Point Coordinate</td><td>0 E/W  |  0 N/S</td></tr>
+<tr><td>Survey Point Elevation</td><td>0</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">External Files</div>
+        <div class="structureBreakdown">5 Checks, 5 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to linked and imported files in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Linked Revit Files and Their Link Method</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of the link method (overlay vs. attach) for each Revit link in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 6</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>RVT Links : Type : CP-ARK-ZZ-ZZ-CM-E-80-0001.rvt</td><td>Overlay</td></tr>
+<tr><td>RVT Links : Type : CP-ARK-ZZ-ZZ-CM-P-80-0001.rvt</td><td>Overlay</td></tr>
+<tr><td>RVT Links : Type : CP-JRL-WT-XX-M3-X-80-0001.rvt</td><td>Overlay</td></tr>
+<tr><td>RVT Links : Type : CP-MDS-WT-ZZ-M3-A-80-0001.rvt</td><td>Overlay</td></tr>
+<tr><td>RVT Links : Type : CP-MDS-WT-ZZ-M3-A-80-0010.rvt</td><td>Overlay</td></tr>
+<tr><td>RVT Links : Type : CP-MDS-WT-ZZ-M3-A-80-1001.rvt</td><td>Overlay</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Linked CAD Files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all linked CAD files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>21012-002 Issue 1 2021-5-25.dwg : 21012-002 Issue 1 2021-5-25.dwg</td></tr>
+<tr><td>21012-002 Issue 1 2021-5-25.dwg : 21012-002 Issue 1 2021-5-25.dwg</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Imported CAD files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all CAD files that were Imported and not Linked.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 4</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>ALPH1-CHARLIE.dwg : ALPH1-CHARLIE.dwg</td></tr>
+<tr><td>ALPH1-WSP-PD-LG-DR-P-520102-DWG_T2.dwg : ALPH1-WSP-PD-LG-DR-P-520102-DWG_T2.dwg</td></tr>
+<tr><td>ALPH1-WSP-SC-UG-DR-P-520101-DWG_T2.dwg : ALPH1-WSP-SC-UG-DR-P-520101-DWG_T2.dwg</td></tr>
+<tr><td>cooling tower.dwg : cooling tower.dwg</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Imported SKP files</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all imported SKP files in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Raster Images</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all raster images placed in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Levels and Grids</div>
+        <div class="structureBreakdown">2 Checks, 2 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to datum and location elements in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Levels</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all level elements in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 115</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Grids</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all grid elements in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 71</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Views</div>
+        <div class="structureBreakdown">3 Checks, 3 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to views in the model.</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Views</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all views.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 5</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>3D View - MEP_COORD_Main Equipment</td></tr>
+<tr><td>3D View - MEP_COORD_Pipework Distribution</td></tr>
+<tr><td>3D View - MEP_GEN_Complete</td></tr>
+<tr><td>3D View - MEP_GEN_Equipments Only</td></tr>
+<tr><td>3D View - MEP_GEN_Piping Only</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Sheets</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all sheets in the model. Sheets typically do not impact model size, but too many unmanaged views can impact user efficiency.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Schedules</div>
+        <div class="portalStandardText" style="text-align: left">COUNT of all schedules in the model. Schedules typically do not impact model size, but too many unmanaged views can impact user efficiency.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Model Elements</div>
+        <div class="structureBreakdown">25 Checks, 2 <Span Foreground="#DD2222">(50%)</Span> Pass, 2 Fail, 21 Count/List</div>
+    </div>
+    <div class="portalStandardText">A series of checks related to model elements in the model.</div>
+    <div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Arch System Families</div>
+        <div class="structureBreakdown">10 Checks, 10 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of architectural system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Ceiling Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all ceiling family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ceilings : Type : Ceiling 1</td></tr>
+<tr><td>Ceilings : Type : MVB_A_XX_CEI-IC1_25mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Curtain System</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all architectural curtain system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Curtain Systems : Type : Curtain System</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Curtain Wall Mullion Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all curtain wall mullion family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Floor Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all floor family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Floors : Type : Grated Floor</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Railing Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all railing family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Railings : Type : Railings_Railing1100mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Ramp Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all ramp family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ramps : Type : Ramp 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Roof Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all roof family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Roofs : Type : Roof 1</td></tr>
+<tr><td>Roofs : Type : Sloped Glazing</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Site Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all site family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Stair Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all stair family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 4</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Stairs : Type : AssembledStair_190mmMaxRiser250mmGoing</td></tr>
+<tr><td>Stairs : Type : Cast-In-Place Stair</td></tr>
+<tr><td>Stairs : Type : Precast Stair</td></tr>
+<tr><td>Stairs : Type : Stairs 1</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Wall Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all wall family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Walls : Type : -</td></tr>
+<tr><td>Walls : Type : .ARK_A_WALL_X-Interior 100mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">MEP System Families</div>
+        <div class="structureBreakdown">9 Checks, 1 <Span Foreground="#DD2222">(33%)</Span> Pass, 2 Fail, 6 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of MEP system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all duct family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 3</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Ducts : Type : -</td></tr>
+<tr><td>Ducts : Type : .ARK_H_DUC_X-Insulated Duct</td></tr>
+<tr><td>Ducts : Type : .ARK_M_DUR_X-Flanged Tee-Branch</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct System Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all duct system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 4</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-EXH - Exhaust Air</td></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-FLUE - Boiler Flue</td></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-RET - Return Air</td></tr>
+<tr><td>Duct Systems : Type : .ARK_M_DUS_X-SUP - Supply Air</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duct Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any duct related elements that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are duct related elements that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Mechanical Equipment</td><td>AM45-ES</td><td>AM45-ES_(892mmx892mmx1030mm)</td><td>Mechanical Equipment : AM45-ES : AM45-ES_(892mmx892mmx1030mm)</td><td>29327099</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Flex Duct Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all flex duct family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Flex Ducts : Type : Flex - Rectangular</td></tr>
+<tr><td>Flex Ducts : Type : Semi Rigid - Flex Duct</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Flex Pipe Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all flex pipe family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Flex Pipes : Type : Flex - Round</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Pipe Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all pipe family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 7</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-cPVC Threaded - for Sprinkler</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Flanged</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Threaded</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Welded</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Heavy Welded - Tap</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-CS Victaulic</td></tr>
+<tr><td>Pipes : Type : .ARK_M_PIP_X-PP-R eFusion</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Piping System Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all piping system family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 16</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-CHW-F - Chilled Water Flow</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-CHW-R - Chilled Water Return</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-CNW-F - Condenser Water Flow</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-CNW-R - Condenser Water Return</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-GAS - Natural Gas</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-LTHW-F - Low Temperature Heating Water Flow</td></tr>
+<tr><td>Piping Systems : Type : .ARK_M_PIS_X-LTHW-R - Low Temperature Heating Water Return</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-BCWS - Boosted Cold Water Service</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-DHWS - Domestic Hot Water Service</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-FDR - Fire Dry Riser</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-FWR - Fire Wet Riser</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-SPK - Sprinkler</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-SVP - Soil and Vent Pipe</td></tr>
+<tr><td>Piping Systems : Type : .ARK_P_PIS_X-VP - Vent Pipe</td></tr>
+<tr><td>Piping Systems : Type : xxx. (fp other)</td></tr>
+<tr><td>Piping Systems : Type : xxx. (fp pre-action)</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Fail_26.png" alt="FAIL" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Piping Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any piping related elements that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">There are piping related elements that that have a blank System Name.</div>
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 454</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Category</th><th>Family</th><th>Type</th><th>Name</th><th>ID</th></tr>
+<tr><td>Mechanical Equipment</td><td>zzz.ARK_Xpot XP</td><td>Xpot-XP</td><td>Mechanical Equipment : zzz.ARK_Xpot XP : Xpot-XP</td><td>29327098</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>HEX-CHW-B1-10.12</td><td>Mechanical Equipment : ZZZ.WSP_MechanicalPlateHeatExchanger : HEX-CHW-B1-10.12</td><td>27906506</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>HEX-CHW-B1-10.12</td><td>Mechanical Equipment : ZZZ.WSP_MechanicalPlateHeatExchanger : HEX-CHW-B1-10.12</td><td>27906505</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>HEX-CHW-B1-10.12</td><td>Mechanical Equipment : ZZZ.WSP_MechanicalPlateHeatExchanger : HEX-CHW-B1-10.12</td><td>29313124</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>HEX-CHW-B1-10.12</td><td>Mechanical Equipment : ZZZ.WSP_MechanicalPlateHeatExchanger : HEX-CHW-B1-10.12</td><td>29313111</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>HEX-CHW-B1-10.12</td><td>Mechanical Equipment : ZZZ.WSP_MechanicalPlateHeatExchanger : HEX-CHW-B1-10.12</td><td>29313066</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_MechanicalPlateHeatExchanger</td><td>HEX-CHW-B1-10.12</td><td>Mechanical Equipment : ZZZ.WSP_MechanicalPlateHeatExchanger : HEX-CHW-B1-10.12</td><td>27906504</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>Mechanical Equipment : ZZZ.WSP_TPE 65-250-50Hz-MGE : ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>29358540</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>Mechanical Equipment : ZZZ.WSP_TPE 65-250-50Hz-MGE : ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>29327057</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>Mechanical Equipment : ZZZ.WSP_TPE 65-250-50Hz-MGE : ZZZ.WSP_TPE 65-250-50Hz-MGE</td><td>29327056</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>Mechanical Equipment : ZZZ_ARK_Cooling_Tower_CLIM_21471 : ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>29326758</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>Mechanical Equipment : ZZZ_ARK_Cooling_Tower_CLIM_21471 : ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>29326732</td></tr>
+<tr><td>Mechanical Equipment</td><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>Mechanical Equipment : ZZZ_ARK_Cooling_Tower_CLIM_21471 : ZZZ_ARK_Cooling_Tower_CLIM_21471</td><td>29326598</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28398583</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28398651</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28398617</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400700</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28399056</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28398753</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28398719</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28398685</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400802</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401006</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401176</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401210</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401142</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401108</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401074</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401040</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400972</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400938</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400904</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400870</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400836</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400768</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28400734</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401414</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401448</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>28401380</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 25</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 25</td><td>24614093</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401209</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401175</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400699</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401141</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401107</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28398650</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401073</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28399055</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401039</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401005</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28398752</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400971</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28398582</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400937</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400903</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28398718</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400869</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400835</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28398616</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400801</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28398684</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400767</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28400733</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401447</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401413</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>28401379</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Ball Valve Threaded DN15-100</td><td>DN 50</td><td>Pipe Accessories : .ARK_M_PIA_FL-Ball Valve Threaded DN15-100 : DN 50</td><td>24614092</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401179</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493058</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493060</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401145</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493062</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401111</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493064</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401077</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493066</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401043</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493068</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493070</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401009</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493072</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400975</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493075</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400941</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493077</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400907</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493079</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28398586</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400873</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493084</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400839</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493083</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400805</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493078</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400771</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493076</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493073</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400737</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493071</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28400703</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493069</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28399059</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493067</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28398756</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493065</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493063</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28398722</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493061</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28398688</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493059</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28398654</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493057</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28398620</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401451</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28928329</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493056</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401417</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401383</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>26493055</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>28401213</td></tr>
+<tr><td>Pipe Accessories</td><td>.ARK_M_PIA_FL-Pressure Gauge onValve</td><td>Dial 63 mm</td><td>Pipe Accessories : .ARK_M_PIA_FL-Pressure Gauge onValve : Dial 63 mm</td><td>24664574</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338212</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338329</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338370</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338779</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338818</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29352999</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353021</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353074</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353086</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353100</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353131</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353907</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353927</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354013</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354049</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354063</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354133</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354218</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354397</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354411</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354444</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354448</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354542</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354556</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355561</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355610</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355616</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355628</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355923</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355933</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355985</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356129</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356216</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356220</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356230</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356433</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356439</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356500</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356506</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356591</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356607</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356619</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356625</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356637</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356649</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356661</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356665</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356671</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357445</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357451</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357491</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357497</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357737</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357743</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358130</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358136</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358187</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358191</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358209</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358298</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358584</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358651</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358746</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358750</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358779</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358894</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359003</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359086</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359140</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359150</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359160</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359164</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359174</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359182</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359190</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359198</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360717</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360731</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360743</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360755</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360797</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360809</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360821</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360833</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361020</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361028</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361067</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361081</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361208</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361212</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361257</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361269</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361283</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361334</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361590</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361644</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361671</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361685</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361720</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361819</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361831</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361843</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361891</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361968</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362038</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362146</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362150</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362160</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362200</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29375079</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29375085</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29375093</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29375091</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29375083</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29375077</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362198</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362158</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362148</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29362040</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361970</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361893</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361889</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361841</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361829</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361817</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361718</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361683</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361669</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361642</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361588</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361332</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361281</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361267</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361255</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361210</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361083</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361069</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361030</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29361022</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360835</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360823</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360811</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360799</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360757</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360745</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360733</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29360719</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359200</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359192</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359184</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359176</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359172</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359162</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359152</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359148</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359088</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29359005</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358896</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358781</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358777</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358748</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358653</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358649</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358300</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358211</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358207</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358189</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358138</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358132</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29358128</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357741</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357735</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357495</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357489</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357449</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29357443</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356669</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356663</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356651</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356639</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356627</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356621</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356617</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356605</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356589</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356504</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356498</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356437</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356431</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356228</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356218</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29356131</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355987</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355935</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355925</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355921</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355626</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355614</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355608</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29355559</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354554</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354540</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354446</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354413</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354399</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354220</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354135</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354065</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354051</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29354015</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353929</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353909</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353133</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353102</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353088</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353076</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353023</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29353001</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338820</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338781</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338372</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338331</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338214</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338197</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907758</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907766</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907776</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907780</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908451</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908607</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908614</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908624</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908628</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908635</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908644</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908651</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908659</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908663</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908673</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908682</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908686</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908711</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908736</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908740</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908749</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908780</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908820</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908891</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908899</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908905</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908912</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908924</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908931</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908941</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908952</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908956</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908963</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908961</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908954</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908943</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908933</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908926</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908922</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908910</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908903</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908897</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908889</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908782</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337349</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337351</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337373</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337392</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337394</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337400</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337669</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337671</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337800</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29338195</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337802</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337402</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>29337375</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908754</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908747</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908738</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908713</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908709</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908684</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908675</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908671</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908661</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908653</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908646</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908642</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908633</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908626</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908616</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908609</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908605</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27908449</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907778</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907768</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907760</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907756</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907577</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907579</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907581</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907587</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907658</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907660</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907670</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907672</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907688</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907692</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907694</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907696</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907744</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907746</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907748</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907698</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907690</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907668</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907585</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907539</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907515</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907517</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907519</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907535</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907537</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907507</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907509</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907505</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907501</td></tr>
+<tr><td>Pipe Fittings</td><td>Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS</td><td>Standard</td><td>Pipe Fittings : Pipe Fittings_VictaulicGroovedCoupling_OGS_AGS : Standard</td><td>27907499</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Pass_26.png" alt="PASS" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Electrical Systems That Are Not Connected</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any electrical related elements that have a blank Panel Name or Circuit Number.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div>
+</div><div class="treeElement">
+    <div class="structureHeading">
+        <div class="portalHeadlineText structureHeadingText">Structural System Families</div>
+        <div class="structureBreakdown">4 Checks, 4 Count/List</div>
+    </div>
+    <div class="portalStandardText">Reports of structural system families in the model</div>
+    <div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Floor Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all floor family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Floors : Type : Grated Floor</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Foundation Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all foundation family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 1</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Structural Foundations : Type : -</td></tr>
+</table>
+</div>
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Rebar Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all rebar family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Wall Families</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all wall family types in the model.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 2</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Name</th></tr>
+<tr><td>Walls : Type : -</td></tr>
+<tr><td>Walls : Type : .ARK_A_WALL_X-Interior 100mm</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Pass_26.png" alt="PASS" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Duplicate Modeled Elements</div>
+        <div class="portalStandardText" style="text-align: left">PASS/FAIL check to determine if there are any modeled elements that are duplicates (identical elements at the same location and base level). Check will Fail if any duplicate element is found.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 0</div>
+        
+        
+        
+    </div>
+</div><div class="checkResult">
+    <img src="https://interoperability.autodesk.com/modelchecker/reports/Icon_Report_Report_26.png" alt="COUNT AND LIST" width="26" height="26"/>
+    <div style="margin-left: 15px; margin-top: 5px">
+        <div class="portalHeadlineText" style="text-align: left">Worksets and Elements</div>
+        <div class="portalStandardText" style="text-align: left">COUNT and LIST of all user worksets for a Revit model or indicates '*Not Workshared*' if worksharing is not enabled.</div>
+        
+        <div class="portalHeadlineText" style="margin - top: 15px">Count: 41.793</div>
+        
+        <div class="tableScroll">
+<table class="itemList">
+<tr><th>Count</th><th>Name</th></tr>
+<tr><td>14404</td><td>.ARK_M_WST_X-LTHW & CHW</td></tr>
+<tr><td>13435</td><td>.ARK_P_WST_X-BCWS, DWS & SPK</td></tr>
+<tr><td>8852</td><td>.ARK_M_WST_X-Mechanical Combined</td></tr>
+<tr><td>1172</td><td>.ARK_P_WST_X-SVP & RWP</td></tr>
+<tr><td>906</td><td>.ARK_B_WST_X-Unistrut & Hanger</td></tr>
+<tr><td>863</td><td>.ARK_Z_WST_X-Levels & Grids (Workset1)</td></tr>
+<tr><td>629</td><td>.ARK_E_WST_X-Electrical Containment</td></tr>
+<tr><td>625</td><td>.ARK_E_WST_X-Electrical Combined</td></tr>
+<tr><td>390</td><td>.ARK_B_WST_X-BW & Openings</td></tr>
+<tr><td>367</td><td>.ARK_H_WST_X-Ventilation</td></tr>
+<tr><td>44</td><td>.ARK_Z_WST_X-RVT Link</td></tr>
+<tr><td>39</td><td>.ARK_E_WST_X-Electrical Combined - Equipment</td></tr>
+<tr><td>34</td><td>.ARK_M_WST_X-Mechanical Combined - Plantroom</td></tr>
+<tr><td>26</td><td>.ARK_Z_WST_X-Space & HVAC Zone</td></tr>
+<tr><td>5</td><td>temp.JMM</td></tr>
+<tr><td>2</td><td>.ARK_A_WST_X-Proposed Arch (temporary)</td></tr>
+<tr><td>0</td><td>.ARK_M_WST_X-GAS</td></tr>
+<tr><td>0</td><td>.ARK_M_WST_X-VRF</td></tr>
+<tr><td>0</td><td>.ARK_P_WST_X-SVP - Flat Distribution</td></tr>
+<tr><td>0</td><td>temp.SS</td></tr>
+</table>
+</div>
+        
+    </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+</body>
+</html>
